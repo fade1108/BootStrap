@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width,
+          user-scalable=no, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <style>
+
+        /*重写bootStrap里的类*/
+        .btn-danger{
+            background-color: #ff0000;
+        }
+    </style>
+
+</head>
+<body>
+<!--div里必须有一个class 叫 container-->
+<!--container-fluid 变宽容器
+根据不同分辨率的屏幕，宽度永远是屏幕的100%
+ boot 支持四种屏幕 xl/lg/md/sm 不支持xs
+ text-lg-left text-md-right
+ 大屏时向左，小屏时向右
+-->
+    <div class="container-fluid">
+        <h1>按钮相关的class</h1>
+        <input class="btn btn-danger" type="button" value="危险">
+        <button class="btn btn-success">成功</button>
+        <a class="btn btn-warning" href="#">警告</a>
+        <button class="btn btn-info">信息</button>
+        <button class="btn btn-primary">主要</button>
+        <button class="btn btn-secondary">次要</button>
+        <button class="btn btn-dark">深色</button>
+        <button class="btn  btn-light">浅色</button>
+        <button class="btn btn-outline-danger">红色边框</button>
+        <button class="btn btn-outline-info">蓝色边框</button>
+        <button class="btn btn-outline-dark">深色边框</button>
+        <button class="btn btn-outline-danger btn-sm">小</button>
+        <button class="btn btn-outline-info btn-lg">大</button>
+        <button class="btn btn-block btn-success">提交</button>
+        <button class=" btn btn-danger btn-link">超链接</button>
+    </div>
+<div class="container-fluid">
+    <h1>图片相关</h1>
+    <img class="rounded-circle" src="timg.jpg">
+    <img class="img-fluid" src="3.jpg">
+    <br>
+    <hr>
+    <br>
+    <h1>文字相关</h1>
+    <div class="text-danger h1 text-lowercase text-uppercase
+    text--left text-md-right">
+
+sajdsadjksajdjlsadsaABCDEFG
+    </div>
+
+
+</div>
+</body>
+</html>
