@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width,
+          user-scalable=no, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery.min.js"></script>
+    <script src="popper.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <style>
+        .container>div{
+            border: 2px solid #f00;
+        }
+        .container>div>div{
+            border: 2px solid #f1b0b7;
+        }
+    </style>
+</head>
+<body>
+<!--div里必须有一个class 叫 container-->
+<div class="container">
+    <div class="row">
+        <div class="col-4 offset-8">123</div>
+    </div>
+
+
+
+
+
+    <hr>
+    <br>
+    <br>
+    <h1>一行3列1:1:1</h1>
+    <div class="row">
+        <div class="col-4">4</div>
+        <div class="col-4">4</div>
+        <div class="col-4">4</div>
+    </div>
+<hr>
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-12"> 1   </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">  1 </div>
+        <div class="col-lg-3 col-md-6 col-sm-12">   1</div>
+        <div class="col-lg-3 col-md-6 col-sm-12">  1 </div>
+    </div>
+
+
+
+
+
+    <br>
+    <br>
+    <hr>
+    <br>
+    <div class="row">
+        <img src="boot-1.png" class="px-0 col-lg-3 col-md-6 col-sm-12">
+        <img src="boot-2.png" class="px-0 col-lg-3 col-md-6 col-sm-12">
+        <img src="boot-3.png" class="px-0 col-lg-3 col-md-6 col-sm-12">
+        <img src="boot-4.png" class="px-0 col-lg-3 col-md-6 col-sm-12">
+    </div>
+  <div class="row">
+      <div class="col-1">-- 每个div占一个格子</div>
+      <!-- 每个col自带 左右15 的内边距 -->
+  </div>
+    <div class="row">
+        <div class="col-2">-- 每个div占2个格子</div>
+    </div>
+    <div class="row">
+        <div class="col-11">-- 每个div11个格子</div>
+    </div>
+</div>
+</body>
+</html>
