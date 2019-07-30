@@ -1,0 +1,81 @@
+$jd_red:#f10215;//创建变量
+//$normal-width:100px;
+//$befor-content:'子曾经曰过';
+//$border-style:solid;
+//$my_border:1px solid #00f;
+//$my_color:$jd_red;
+////如果此变量之前声明过值，就使用之前声明的值!default
+//p{
+//  color:$jd_red;
+//  border: $my_border;
+//}
+//div{
+//  background: $jd_red;
+//}
+//h1{
+//  border: 1px solid #0b2e13;
+//}
+////嵌套
+//#content{
+//  font-size: 32px;
+//  div.top{
+//    color:#f00;
+//    h1{border: 1px solid #f00;}
+//    p{margin: 2px;}
+//  }
+//}
+$myblue:#0aa;
+$fontcolor:#fff;
+$myheight:2.5rem;
+$mywidth:8rem;
+.mybtn {
+  background-color: $myblue;
+  color: $fontcolor;
+  height: $myheight;
+  width: $mywidth;
+  display : block;
+  border-radius:0.25rem;
+  text-decoration: none;
+  text-align: center;
+  line-height: $myheight;
+  &:hover{color:$jd_red}
+}
+//群组选择器的嵌套
+nav,div,h1{
+  a{color:#fff;}
+}
+//属性嵌套
+div{
+  border:{
+    style: solid;
+    width: 10px;
+    color:#0b2e13;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>范围</title>
+</head>
+<body>
+<script>
+    var a =10;
+    function fun() {
+        var a=20;
+        a++;
+        console.log(a)
+    }
+    fun();//只要函数里有相同名字的变量，就不用全局的。函数内部的a和外部的a完全没有关系
+    console.log(a)//10;
+    /*
+    闭包closure
+    重用一个变量，又保护变量不被污染的一种编程方法
+
+
+    */
+    //1.用外层函数包裹受保护的变量和内层函数
+    function parent() {
+        var total=1000;
+        
+        //2.外层函数将内层函数return到外部！
+       return function pay(money) {
+            total-=money;
+            console.log('花了'+money+"元,还剩"+total+"元")
+        }
+
+    }
+    //3.调用外层函数，获得内层函数返回的函数对象，保存在变量中，反复使用
+    //parent的局部变量total。在parent()调用后，应该释放
+    //闭包：外层函数 有一个对象，被内层函数引用着无法释放。 被内层函数反复使用。叫做闭包
+     var pay = parent();
+    pay(100);
+    total=0;
+    pay(100);
+
+    pay(100);
+
+    //释放资源
+    pay(100);
+    pay(100);
+
+
+
+</script>
+</body>
+
+</html>

@@ -28,11 +28,59 @@
             border-radius: 50%;
             cursor: pointer;
         }
+
+        .page-item .page-link {
+            border-radius: 0.25rem;
+        }
+
+        .page-item + .page-item {
+            margin-left: 0.5rem;
+        }
+        .breadcrumb-item + .breadcrumb-item::before{
+            content: ">";
+        }
     </style>
 </head>
 <body>
 <!--div里必须有一个class 叫 container-->
 <div class="container">
+    <h1>折叠导航栏</h1>
+    <div class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!--1最前面不折叠不隐藏的菜单-->
+        <a class="navbar-brand" href="">Bootstrap中文网</a>
+        <!--2折叠之后出现的按钮，小屏显示，大屏不显示-->
+        <button data-toggle="collapse" data-target="#content" class="navbar-toggler">
+            <span class=" navbar-toggler-icon"></span>
+        </button>
+        <!--3.折叠的导航，小屏折叠，大屏横向-->
+        <div id="content" class="collapse navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="" class="nav-link">boot1</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">boot2</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">boot3</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">boot4</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">全局css</a>
+                </li>
+                <li class="nav-item">
+                    <a href="" class="nav-link">组件</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+<div class="container">
+
+
     <h1>焦点轮播图</h1>
     <div id="lunbo" class="carousel " data-ride="carousel">
         <!--1.轮播图片-->
@@ -72,39 +120,7 @@
     </div>
     <br>
 
-    <h1>折叠导航栏</h1>
-    <div class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <!--1最前面不折叠不隐藏的菜单-->
-        <a class="navbar-brand" href="">Bootstrap中文网</a>
-        <!--2折叠之后出现的按钮，小屏显示，大屏不显示-->
-        <button data-toggle="collapse" data-target="#content" class="navbar-toggler">
-            <span class=" navbar-toggler-icon"></span>
-        </button>
-        <!--3.折叠的导航，小屏折叠，大屏横向-->
-        <div id="content" class="collapse navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a href="" class="nav-link">boot1</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">boot2</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">boot3</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">boot4</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">全局css</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" class="nav-link">组件</a>
-                </li>
-            </ul>
-        </div>
 
-    </div>
     <br><br><br><br>
     <hr>
     <h1>1水平导航</h1>
@@ -241,24 +257,24 @@
     <br>
     <hr>
     <h1>手风琴效果（卡片＋折叠）</h1>
-    <div id="parent" >
+    <div id="parent">
         <!--     collapse 和 card-body 在一个div里，会卡-->e
-        <div  class="card">
+        <div class="card">
             <div class="card-header">
-                <a  class="card-link" data-toggle="collapse" href="#c1">卡片1</a>
+                <a class="card-link" data-toggle="collapse" href="#c1">卡片1</a>
             </div>
             <div data-parent="#parent" id="c1" class="collapse">
-                <div  class="card-body ">
+                <div class="card-body ">
                     asdkjsakljdklsajdklsjakldjsakd
                 </div>
             </div>
         </div>
         <div class="card">
             <div class="card-header">
-                <a  class="card-link" data-toggle="collapse" href="#c2">卡片2</a>
+                <a class="card-link" data-toggle="collapse" href="#c2">卡片2</a>
             </div>
             <div data-parent="#parent" id="c2" class="collapse">
-                <div  class="card-body ">
+                <div class="card-body ">
                     asdkjsakljdklsajdklsjakldjsakd
                 </div>
             </div>
@@ -269,7 +285,7 @@
     <hr>
     <div id="parent2">
         <div class="card">
-            <div  class="card-header">
+            <div class="card-header">
                 <a class="card-link" data-toggle="collapse" href="#c3">卡片3</a>
             </div>
             <div data-parent="parent2" id="c3" class="collapse">
@@ -293,7 +309,6 @@
             <p>180天团成员</p>
         </div>
     </div>
-
 
 
     <h1>模态框</h1>
@@ -333,7 +348,7 @@
     <h1>徽章,把徽章看做小按钮</h1>
     <ul class="list-group">
         <li class="list-group-item">
-           赞<a class="badge badge-pill bg-success">666</a>
+            赞<a class="badge badge-pill bg-success">666</a>
         </li>
     </ul>
 
@@ -358,11 +373,76 @@
     </div>
 
     <h1>信息提示框</h1>
-  <div class="alert alert-info alert-dismissible">
+    <div class="alert alert-info alert-dismissible">
       <span data-dismiss="alert">
           asd
       </span>
-  </div>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <h1>分页</h1>
+    <ul class="pagination bg-light">
+        <li class="page-item disabled ">
+            <a class="page-link" href="">上一页</a>
+        </li>
+        <li class="page-item active ">
+            <a class="page-link" href="">1</a>
+        </li>
+        <li class="page-item ">
+            <a class="page-link" href="">2</a>
+        </li>
+        <li class="page-item ">
+            <a class="page-link" href="">3</a>
+        </li>
+        <li class="page-item ">
+            <a class="page-link" href="">4</a>
+        </li>
+        <li class="page-item ">
+            <a class="page-link" href="">5</a>
+        </li>
+    </ul>
+    <br>
+    <br>
+    <hr>
+    <h1>面包屑导航</h1>
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a  href="">首页</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a  href="">学习用品</a>
+        </li>
+        <li class="breadcrumb-item">
+            <a  href="">笔记本电脑</a>
+        </li>
+    </ul>
+    <br>
+    <br>
+    <hr>
+    <h1>带条纹的进度条</h1>
+    <div class="progress">
+        <div class="progress-bar w-100 bg-warning progress-bar-striped">
+
+        </div>
+    </div>
+    <h1>进度条</h1>
+    <div class="progress">
+        <div class="progress-bar w-75 bg-danger">
+
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+
+
+
+
+
+
+
 </div>
 </body>
 </html>

@@ -1,0 +1,96 @@
+$mywidth:200px;
+$myheight:200px;
+@function get_width($a,$b){
+  @return min($a,$b);
+}
+$type:moon;
+h2{
+@if($type==sun){
+  color: #f00;
+}@else if($type==moon){
+  color: #00f;
+}@else {
+  color:#ff0;
+}
+}
+
+//字符串函数
+p:after{
+  //content: quote(dsadsadas);
+  content: to_upper_case("abc");
+
+}
+
+//除法的问题
+p{
+  background: hsl(240,50%,50%);
+  font-size: (10px/5px);
+  $width:1000px;
+  width: $width/2;
+  height: (500px/2);
+  margin-left: 5px+8px/2px;
+  content: "liangliang ate #{200+100} baozis";
+}
+
+//字符串拼接,生成的css文件里显示加号前面的字符格式
+p:before{
+  content: "Microsoft"+yahei;
+  font-family: A+"rial";
+}
+
+//继承
+.my_rounded{
+  border:1px solid #f00;
+  border-radius: 5px;
+}
+.my_shadow{
+  box-shadow: 0 0 10px;
+  @extend .my_rounded;
+}
+//运算
+$my-width:5%;
+$my-max-width:$my-width*2;
+$other-width:2rem+1rem;
+div{
+  width: $my-max-width;
+  max-width: 1in+1cm;
+}
+
+//混合器--css hack
+@mixin  linear_grediant($color1,$color2){
+  background: -webkit-linear-gradient(bottom,$color1,$color2);
+  background: -o-linear-gradient(bottom,$color1,$color2);
+  background: -ms-linear-gradient(bottom,$color1,$color2);
+  background: -moz-linear-gradient(bottom,$color1,$color2);
+}
+//混合器
+@mixin my_border($color,$radius,$outline){
+  border: 1px solid $color;
+  border-radius: $radius;
+  outline: $outline;
+}
+div{
+  width: 100px;
+  @include my_border(#0ff,30%,0);
+}
+p{
+  color: #d39e00;
+  @include my_border(#0ff,30%,0);
+}
+//导入color.scss
+@import "color";
+#main{
+  height: $myheight;
+  width: $mywidth;
+  background-color: #491217;
+  transition: {property: all;duration: 2s;timing-function: linear};
+  &:hover{
+    background-color: $text_danger;
+    border-radius: 50%;
+  }
+}
+#d2{
+  height: $myheight;
+  width: $mywidth;
+  @include linear_grediant(#0ff,#f00)
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //用户输入一条消息
+    var msg = prompt('请输入消息');
+    //去消息中查找是否包含“我草”
+    var i=msg.indexOf('我草')
+    //如果找到
+    if(i!=-1){
+        // 就在页面显示 包含敏感词汇，不允许发送
+        //在页面写
+        document.write("<h1 style='color: red'>包含敏感词汇，不允许发送</h1>")
+    }else {
+        //否则，如果没找到，就在页面显示：
+        document.write("<h1 style='color: #0c5460'>然哥说</h1>")
+    }
+//2.用正则表达式模糊查找多种敏感词
+    /*
+    只有一个参数，不能指定开始查找的位置，永远从开头找
+    */
+    var i = str.search(/正则/);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

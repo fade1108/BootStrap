@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+var msg = prompt("请输入消息");
+var i = msg.search(/([我卧]|wo)\s*([草艹操]|cao)/i);
+if(i!=-1){
+    document.write("<h1 style='color: red'>包含敏感词汇</h1>")
+}else {
+    document.write("<h1 style='color: #0b2e13'>然哥说:"+msg+"</h1>")
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
