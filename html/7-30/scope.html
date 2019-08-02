@@ -23,7 +23,7 @@
     //1.用外层函数包裹受保护的变量和内层函数
     function parent() {
         var total=1000;
-        
+
         //2.外层函数将内层函数return到外部！
        return function pay(money) {
             total-=money;
@@ -41,9 +41,8 @@
 
     pay(100);
 
-    //释放资源
-    pay(100);
-    pay(100);
+
+
 
 
 

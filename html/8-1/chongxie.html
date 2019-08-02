@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*
+    var arr=[1,2,3];
+    var now = new Date();
+    console.log(arr);
+    console.dir(now);//输出对象的存储结构
+    console.log(now.toString());
+    var lilei={
+        sname:"lilei",
+        sage:11,
+        toString:function () {
+            return "{sname:"+this.sname+","+this.sage+"}"
+        }
+    };
+
+console.log(lilei.toString());
+//自定义继承
+    /*
+    只要觉得父类的方法不好用，就可以换
+   子对象.__proto__=新父类
+   问题：__proto__浏览器不推荐使用
+   解决：setPrototypeOf()代替__proto__
+   Object.setPrototypeOf(子对象，新碟)
+
+
+   同时换多个对象的爹
+
+
+    */
+    var newfather={
+        bal:100000,
+        car:"infiniti"
+    };
+function Student(sname,sage) {
+    this.sname=sname;
+    this.sage=sage;
+}
+Student.prototype=newfather;
+    Student.prototype.intrSelf=function () {
+        console.log("im"+this.sname+"im"+this.sage);
+    };
+    var lilei=new Student("Li lei",11);
+    var hmm = new Student("Han meimei",12);
+    //hmm.__proto__=newfather;
+    Object.setPrototypeOf(hmm,newfather);
+    Object.setPrototypeOf(lilei,newfather);
+    console.log(hmm.bal,hmm.car);
+    console.log(hmm);
+    console.log(lilei.bal,lilei.car);
+    console.log(lilei);
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

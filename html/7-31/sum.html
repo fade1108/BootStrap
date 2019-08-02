@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sum函数</title>
+</head>
+<body>
+
+<script>
+    //希望在项目中，所有的数组都可以调用.sum()函数自动求和
+    //为数组的原型对象添加一个sum函数
+    Array.prototype.sum=function () {
+        //先定义变量total=0
+        var total=0;
+        //遍历当前数组中每个元素
+        //为了避免写很对this。代码不容易理解，在公司中，经常给this起别名
+        var arr=this;
+        for(var i=0;i<arr.length;i++){
+            total+=arr[i];
+        }
+        return total;
+    };
+
+var arr = [1,2,3,5];
+
+    console.log(arr.sum())
+
+
+</script>
+
+</body>
+</html>

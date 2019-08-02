@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RegExp</title>
+</head>
+<body>
+<script>
+    //1.验证字符串格式
+    //2.查找每个关键词的内容的内容，又查找每个关键词的位置
+        var str = "明明喜欢我，却不告诉我，别理我，我想静静。静静是谁？你先告诉我明明是谁。";
+var reg=/明明|静静/g;
+
+do{
+    var arr = reg.exec(str);//exec采取的是一次取一个
+    if (arr!=null){
+        console.log(arr)
+    }else {
+        break
+    }
+}while (true);
+
+var str1="1234,1234像首歌.1234,1234像首歌.1234,1234像首歌.1234,1234像首歌."
+    var reg1 = /12|34/g;
+    do {
+        var arr1 = reg1.exec(str1);//检索字符串中指定的值，返回找到的值，并确定其位置
+        if (arr1 != null) {
+            console.log(arr1);
+        } else {
+            break;
+        }
+    }while (true);
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

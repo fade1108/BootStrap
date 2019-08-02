@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+
+
+
+
+
+
+</head>
+<body>
+<script>
+    var lilei={
+        name:"lilei",
+        age:11,
+        intrSelf:function () {
+            console.log("I m "+this.name+" im "+this.age+" years old");
+        }
+    };
+    lilei.intrSelf();
+    console.log("lilei的年龄是"+lilei.age);
+    lilei.age++;
+    console.log("lilei的年龄是"+lilei.age);
+    lilei.intrSelf();
+
+    var hmm={
+        name:"Han meiei",
+        age:12
+    };
+   hmm.intrSelf=lilei.intrSelf;
+    hmm.intrSelf();
+    var instrSelf=lilei.intrSelf;
+    instrSelf();
+    //window.instrSelf
+    //undefined 声明到全局变量var 而后属于window
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

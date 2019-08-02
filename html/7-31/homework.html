@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body>
+<script>
+    function getNum() {
+        var sum = 0;
+            return function (num) {
+                sum+=num;
+                console.log("sum="+sum);
+            }
+
+
+    }
+    var Num = getNum();
+    Num(2);
+    Num(2);
+    Num(2);
+    sum=0;
+
+    Num(2);
+  function add() {
+      var sum=0;
+      for(var i=0;i<arguments.length;i++){
+          sum+=arguments[i];
+      }
+      return sum;
+  }
+    console.log(
+        add(1,2,3),add(1,2,3,4,5)
+    );
+
+function fun() {
+    var n=999;
+    add=function () {
+        n++
+    };
+    return function () {
+        console.log(n)
+    }
+}
+var getN=fun();
+  getN();
+    getN();
+    getN();
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--程序中，需要反复创建同意类型的多个对象时，用构造函数-->
+
+
+
+
+
+
+
+
+</head>
+<body>
+<script>
+//    var hmm = new Object();
+//    hmm.name="韩梅梅";
+//    hmm.age=12;
+//    //所有js对象底层，其实都是关联数组
+//    /*
+//    都可用["成员名"]或者.成员名俩种方式
+//    */
+//    function clone(obj) {
+//        var newObj={};
+//
+//        //2遍历原对象中每个属性
+//        for(var key in obj){
+//            newObj[key]=obj[key];
+//        }
+//        return newObj;
+//    }
+//
+//
+//    var hmm2=clone(hmm);
+//    console.log(hmm==hmm2);
+//    var hmm3=hmm;
+//    console.log(hmm==hmm3);//地址相同，用的同意内存地址
+//    console.log(hmm2);
+//
+
+    function Student(name,age) {
+        this.name=name;
+        this.age=age;
+
+    }
+    //在Student 的老公中添加一个intrSelf让所有孩子公用
+    Student.prototype.trSelf=function () {
+            console.log("im"+this.name+"i m"+this.age+"yearsold")
+
+    };
+    Student.prototype.className="初一二班";
+
+    var hehe=new Student("hehe",11);
+    var gmm = new Student("hanmemei",18);
+    hehe.trSelf();
+    gmm.trSelf();
+    console.log(hehe.__proto__==gmm.__proto__);
+    console.log(hehe);
+    console.log(gmm);
+    console.log(gmm.trSelf());
+    console.log(hehe.className
+    ,gmm.className
+    );
+    Student.prototype.className="初二二班";
+console.log(hehe.className
+    ,gmm.className
+);
+hehe.className="六年级二班";
+console.log(Student.prototype.className);
+console.log(hehe.className);
+
+//如何向原型对象中添加共有成员
+    //向父类中添加儿子共有的方法
+//    Student.prototype.trSelf=function () {
+//
+//    }
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

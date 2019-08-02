@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>function</title>
+</head>
+<body>
+<script>
+
+    //声明提前hoist
+    /*
+    在程序开始执行前，程序会先将所有var声明的变量和function声明的函数
+    提前到当前作用域的顶部集中创建，而赋值=留在原地
+
+    函数也是一个普通的对象。函数名也是个变量
+       变量：内存中存储一个数据的存储空间
+       而赋值留在原地
+
+
+
+
+    解决办法：
+    赋值方式创建：
+    var 函数名 = function(){
+    }
+    */
+    //声明的方式创建函数
+    function fun() {
+        console.log(1);
+    }
+    fun();
+    function fun() {
+        console.log(2);
+    }
+    fun();
+    //赋值方式创建。和声明方式创建的函数在使用时，是完全一样的。
+
+    var fun1 = function () {
+        console.log(1);
+    };
+    fun1();
+    var fun1 = function () {
+        console.log(2);
+    };
+    function pay() {
+        //arguments[      ]
+        if(arguments.length==0){
+            console.log("手机支付");
+        }else  if (arguments.length==1){
+            console.log("现金支付收您"+arguments[0]+"元");
+        }else {
+            console.log("刷卡支付：从您卡号"+arguments[0]+"元");
+        }
+
+
+
+    }
+
+    pay(100);
+    pay();
+    pay("6553 1234","123456");
+        var obj = {dan:"鸡蛋",
+        miantiao:"蔬菜面条",
+        shucai:"上海青",
+        suibian:undefined};
+    function cook(obj) {
+        if (obj.dan=="鸡蛋"&&arguments.length>0){
+            console.log("this is obj"+obj.shucai+obj.miantiao)
+        }
+    }
+    cook({dan:"鸡蛋",shucai:"爱的魔力转圈圈"});
+
+
+
+
+//匿名函数的自调用
+    //今后所有js代码，都要包裹在匿名函数的自调用中
+    (function(){
+    var start = new Date();
+    alert("开始加载内面内容"+start.toLocaleString());
+    })();
+
+    //作用域就是一个变量的可用范围 本质：作用域是保存变量的一个对象
+    //为了避免不同范围的变量间互相干扰
+
+</script>
+<h1>Wwkcine</h1>
+<script>
+    var end = new Date();
+    alert("结束加载页面内容"+end.toLocaleString());
+</script>
+</body>
+</html>

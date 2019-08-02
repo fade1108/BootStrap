@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES5</title>
+</head>
+<body>
+<script>
+//es5   ECMAScript标准的第五个升级版本
+//今后所有的js程序都要运行在严格模式下
+/*
+1.禁止给未声明的变量赋值：
+旧js中：强行给未声明的变量赋值，结果会自动在全局创建
+
+*/
+
+function fun() {
+    var gf;
+    var qgf="今晚308，w84u";
+    console.log(qgf)
+}
+
+
+
+
+//if 开启严格模式
+//强行给未声明变量赋值，报错：xxx is not defined
+
+
+////设置eric对象的eid属性只读
+//Object.defineProperty(eric,"eid",{
+//    writable:false,
+//    configurable:false,
+//    enumerable:false
+//});
+//eric.eid=-2;
+//严格模式下this不再默认指向window。而是指向undefined
+//禁止使用arguments.callee：在函数运行时，专门获得当前正在执行的函数本身
+
+function gun() {
+    console.log(this);
+}
+gun();
+
+function fib(n) {
+    if(n<3){
+        return 1;
+    }else {
+        return arguments.callee(n-1)
+        +arguments.callee(n-2)
+    }
+}
+//console.log(fib(10));
+//2 保护对象：控制对对象的属性值或对象结构进行的随意的篡改
+ //es5标准中，每个数据都有三个小属性
+//value    实际存储属性值
+// writable 是否可写 是否可修改这个属性的值
+    //enumerable  是否遍历 for in 是否能被forin遍历到
+//configurable 是否配置 是否可删除属性，是否可修改前两个开关
+
+//用专门的函数定义属性 defineProperty
+
+//    Object.defineProperty(
+//        eric,"eid",{
+//            writable:false,
+//           //configurable:false//一旦configurable改为false 则不可逆
+//        }
+//    );
+//    Object.defineProperty(
+//        eric,"eid",{
+//            wirtable:true
+//        }
+//    );
+
+
+
+//Object.defineProperty(
+//    eric,"ename",{
+//        writable:true,
+//        configurable:true
+//    }
+//);
+//Object.defineProperty(
+//    eric,"ename",{
+//        writable:true,
+//        configurable:true
+//    }
+//);
+//Object.defineProperty(
+//    eric,"salary",{
+//        enumerable:false
+//    }
+//);
+ 
+
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
