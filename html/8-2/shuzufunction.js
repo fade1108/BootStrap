@@ -79,7 +79,7 @@ var summ=arr.reduce(
 );
 console.log(summ);
 
-//把一个字符打伞成数组  哪个字母出现的最多。出现了几次 
+//把一个字符打伞成数组  哪个字母出现的最多。出现了几次
 var str1="helloyouamysunshineaway";
 
 var arr5 = str1.split("");

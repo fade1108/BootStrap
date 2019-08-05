@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //var 声明的变量没有块级作用域
+
+    var  t= 0;
+    function task1() {
+        t+=0.3;
+    }
+    function task2() {
+        t+=0.8;
+        var err = false;
+        if(err==false){
+            var  t=new Date();
+            console.log("出错了"+t.toLocaleDateString())
+        }
+    }
+
+ task1();
+    task2();
+   console.log(t);
+
+//原理，Let其实就是一个匿名函数自调用
+    //将来声明变量都用let
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

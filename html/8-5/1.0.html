@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="u1">
+
+</ul>
+
+
+
+<script>
+    var arr=[2,5,7,1];
+    console.log(Math.max.apply({},arr))
+
+    var scores=[85,72,90,95];
+
+//        var newArr=scores.map(
+//            function (elem) {
+//                return "<li>"+elem+"</li>"
+//            }
+//        );
+//
+//        console.log(newArr);
+//        var html=newArr.join("");
+//        console.log(html);
+//    u1.innerHTML=html;
+
+    u1.innerHTML=scores.map(
+        function (elem) {
+            return "<li>"+elem+"</li>"
+        }
+    ).join("");
+
+
+//map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回。
+    // map()方法创建一个新数组，结果是该数组中的每个元素都调用一次里面的内置函数
+
+
+
+
+var arr2=[25,68,79,15];
+u1.innerHTML=arr2.map(
+    function (a) {
+        return "<li>"+"<h1>"+a+"</h1>"+"</li>"
+    }
+).join("");
+
+
+
+
+
+(function () {
+    var str="aaccddeee";
+    var arr=str.split("");
+    var result=arr.reduce(
+        function (prev,elem) {
+            if(prev[elem]===undefined){
+                prev[elem]=1;
+            }else {
+                prev[elem]+=1;
+            }
+            return prev;
+        },{}
+    );
+    var char,count;
+    for(var key in result){
+        if(char===undefined){
+            char = key;
+            count=result[key];
+        }else{
+            if(result[key]>count){
+                char=key;
+                count=result[key];
+
+            }
+        }
+    }
+    console.log(char+"共出现"+count);
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
