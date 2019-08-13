@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function liang() {
+       return new Promise(
+            function (door,err) {
+                var bang="亮的接力棒";
+            console.log("亮起跑拿着自己的"+bang);
+            setTimeout(
+                function () {//异步
+                    if(Math.random()<0.6){
+                        console.log("亮亮到达终点");
+                        //在异步函数最后一句话执行完，开门通知下一个人可以开始执行
+                        door(bang);
+                    }else {
+                        console.log("亮摔倒了");
+                        err("亮真的摔倒了");
+                    }
+                },6000
+            )
+        });
+    }
+    function ran(bang) {
+       return new Promise(
+            function (door,err) {
+                console.log("然起跑。。。拿着"+bang);
+                setTimeout(
+                    function () {//异步任务
+                        if(Math.random()<0.6){
+                            console.log("然拿着"+bang+"到终点");
+                            //异步任务结束后，调用开关door，通知下一个函数可以执行
+                            door(bang);
+                        }else {
+                            console.log("呀摔倒了");
+                            err("然摔倒了");
+                        }
+
+                    },2000
+                )
+            }
+        );
+
+    }
+    function dong(bang) {
+        return new Promise(
+            function (door) {
+                console.log("东起跑。。。拿着"+bang);
+                setTimeout(
+                    function () {
+                        console.log("东到终点");
+                       door();
+                    },2000
+                )
+            }
+        );
+    }
+//    liang(
+//        function () {
+//            ran(
+//                function () {
+//                    dong(
+//                        function () {
+//                            console.log("比赛结束");
+//                        }
+//                    );
+//                }
+//            );
+//        }
+//    );
+        //返回了 new promise
+        //当调用了异步任务中的door。开启亮接然（then这个钩子）
+    //能都继续执行.then取决于ran是否支持new Promise()
+    liang().then(ran).then(dong).then(function () {
+            console.log("比赛结束")
+        }).catch(function (err) {
+        console.log(err);
+        console.log("弃权！")
+    })
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

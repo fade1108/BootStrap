@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>实现带样式的表单验证</title>
+    <link rel="Stylesheet" href="5.css"/>
+</head>
+<body>
+<form id="form1">
+    <h2>增加管理员</h2>
+    <table>
+        <tr>
+            <td>姓名：</td>
+            <td>
+                <input name="username"/>
+                <span>*</span>
+            </td>
+            <td>
+                <div class="vali_info">
+                    10个字符以内的字母、数字或下划线的组合
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>密码：</td>
+            <td>
+                <input type="password" name="pwd"/>
+                <span>*</span>
+            </td>
+            <td>
+                <div class="vali_info">6位数字</div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td colspan="2">
+                <input type="button" value="保存"/>
+                <input type="reset" value="重填"/>
+            </td>
+        </tr>
+    </table>
+</form>
+<script>
+    var form=document.forms[0];
+    var txtName=form.username;//找到的一个元素时套在一个集合返回的，用[0]取出集合内的元素对象
+    var txtPwd = form.pwd;
+    txtPwd.onfocus=txtName.onfocus=function () {
+            var txt=this;
+            var div=txt.parentNode.nextElementSibling.children[0];
+           div.className="";
+
+    };
+
+    function vali(txt,reg) {
+        var bool = reg.test(txt.value);
+        var div=txt.parentNode.nextElementSibling.children[0];
+        if(bool){
+            div.className="vali_success";
+        }else {
+            div.className="vali_fail";
+        }
+        return bool;
+    }
+    txtName.onblur=function () {
+        var reg=/^\w{1,10}$/;
+        vali(this,reg);
+    };
+    txtPwd.onblur=function () {
+        var reg=/^\d{6}$/;
+        vali(this,reg);
+    };
+    var btn=form.element[form.length-2];
+    btn.onclick=function () {
+        if(vali(txtName,/^\w{1,10}$/)==false){
+            txtName.onfocus();
+        }else if(vali(txtPwd,/^\d{6}$/)==false){
+            txtPwd.onfocus();
+        }else {
+            alert("注册成功")
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>

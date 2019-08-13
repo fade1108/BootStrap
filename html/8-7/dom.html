@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="dom1.js"></script>
+</head>
+<body>
+    <span>123</span>
+<!--
+document.documentElement html
+document.head ead
+document.body body
+
+
+ 节点.parentNode 获得节点的父节点
+
+ 父节点.childNodes 获得父节点下所有直接子节点的集合
+
+ childNodes 类数组   简称集合
+
+ 父节点.firstChild
+
+ 父节点.lastChild
+
+ 节点.previousSibling 平级的前一个节点
+ 节点.nextSibling 平级的下一个节点
+
+-->
+    <!--
+    元素.parentElement 获得当前元素的父元素
+    父元素.children  获得父元素下 所有子元素的集合
+    父元素.firstElementChild 获得父元素下的第一个子元素
+    父元素.lastElementChild 获得当前父元素最后一个子元素
+    元素.previousElementSibling 平级的前一个节点
+    元素.nextElementSibling 平级的下一个节点
+
+    -->
+    <h1>标题一</h1>
+    <h2>12321</h2>
+    <script>
+        var body=document.body;
+        var children = body.children;
+        console.log(children);
+        //获得span
+        var span = body.firstElementChild;
+        console.log(span);
+        var h1 = span.nextElementSibling;/*span.nextSibling   script.previouSibling*/
+        console.log(h1);
+        var script=body.children[2];
+        var script2=h1.nextElementSibling;
+        console.log(script);
+        console.log(script2);
+        var h2 = body.lastElementChild;
+        console.log(h2);
+    </script>
+</body>
+</html>

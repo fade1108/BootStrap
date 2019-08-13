@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+<ul>
+    <li>{{count}}</li>
+    <li>
+        <ul>
+            <li>{{total}}</li>
+            <li>{{total}}</li>
+        </ul>
+    </li>
+    <li>{{count}}</li>
+
+</ul>
+<!--
+    元素.parentElement 获得当前元素的父元素
+    父元素.children  获得父元素下 所有子元素的集合
+    父元素.firstElementChild 获得父元素下的第一个子元素
+    父元素.lastElementChild 获得当前父元素最后一个子元素
+    元素.previousElementSibling 平级的前一个节点
+    元素.nextElementSibling 平级的下一个节点
+     var 集合 = 父元素.getElementByTagName("标签名")
+    在指定父元素下查找所有标签名为指定标签名的后代元素，返回值：多个元素组成的集合。没找到返回空集合
+ -->
+<script type="text/javascript" src="./dom1.js">
+var body = document.body;
+var jihe = body.getElementsByTagName("li");
+</script>
+</body>
+</html>

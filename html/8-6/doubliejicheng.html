@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //两种类型间的继承
+    /*定义一个上层的父类型，保存俩个子类型公有的属性*/
+    class Enemy{
+        constructor(x,y){
+            this.x=x;
+            this.y=y;
+
+        }
+        //原型对象
+        fly(){
+            console.log("飞行到X："+this.x,+","+this.y+"位置");
+        }
+    }
+
+
+
+
+
+
+    class  San extends Enemy{
+        //构造函数  super自动指向父类构造函数
+       constructor(x,y,award){
+           super(x,y);
+            this.award=award;
+        }
+        getAward(){
+            console.log("击落一个敌人奖励"+this.award);
+        }
+    }
+    class  Plane extends Enemy{
+        constructor(x,y,score){
+            super(x,y);
+            this.score=score;
+        }
+        getScore(){
+            console.log("击落一个敌人奖励"+this.score);
+        }
+    }
+    var s1 =new San(10,50,"1 life");
+    console.log(s1);
+    s1.fly();
+    var s2=new Plane (50,60,"5分");
+    console.log(s2);
+    s2.getScore();
+
+
+    function liang(callback) {//异步
+        console.log("亮起跑");
+        setTimeout(
+            function () {//异步
+                console.log("亮亮到达终点");
+                //而后 callback()
+                callback();//回调任务
+            },6000
+        )
+    }
+    function ran(callback) {
+        console.log("然起跑。。。");
+        setTimeout(
+            function () {
+                console.log("然到终点");
+                callback();
+            },2000
+        )
+    }
+    function dong(callback) {
+        console.log("东起跑。。。");
+        setTimeout(
+            function () {
+                console.log("东到终点");
+                callback();
+            },2000
+        )
+    }
+    liang(
+        function () {
+            ran(
+                function () {
+                    dong(
+                        function () {
+                            console.log("比赛结束");
+                        }
+                    );
+                }
+            );
+        }
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+</body>
+</html>

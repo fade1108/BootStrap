@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+       function open1() {
+           window.open("http://tmooc.cn","_self");
+       }
+       function open2() {
+           location.replace("http://tmooc.cn");
+       }
+       function open3() {
+           window.open("http://tmooc.cn","blank");
+       }
+
+    </script>
+</head>
+
+<body>
+<a href="http://tmooc.cn" target="_self">
+    在当前窗口打开新连接，可后退
+</a><br>
+<button onclick="open1()">在当前窗口打开新链接，可后退</button>
+<br>
+<a href="http://tmooc.cn" target="_blank">
+    在当前窗口打开新连接,可打开无线个
+</a><br>
+<button onclick="open2()">在当前窗口打开新链接，可打开多个</button>
+<br>
+<a href="http://tmooc.cn" target="blank">
+    在当前窗口打开新连接,可打开1个
+</a><br>
+<button onclick="open3()">在当前窗口打开新链接，可打开1个</button>
+
+
+
+
+
+
+</body>
+</html>

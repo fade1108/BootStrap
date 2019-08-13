@@ -1,0 +1,126 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>二级联动列表</title>
+<meta charset="utf-8" />
+<style>
+	.hide{ display: none; }
+</style>
+
+
+</head>
+<body>
+	<select name="provs">
+		<option>—请选择—</option><!--0-->
+		<option>北京市</option><!--1-->
+		<option>天津市</option>
+		<option>河北省</option>
+	</select>
+	
+	<select name="cities" class="hide">
+	</select>
+
+  <script>
+	/*实现“省”和“市”的级联下拉列表 二维数组*/
+	var cities=[
+      [{"name":'东城区',"value":101},
+       {"name":'西城区',"value":102},
+       {"name":'海淀区',"value":103},
+       {"name":'朝阳区',"value":104}],
+      [{"name":'河东区',"value":201},
+       {"name":'河西区',"value":202},
+       {"name":'南开区',"value":303}],
+      [{"name":'石家庄市',"value":301},
+       {"name":'廊坊市',"value":302},
+       {"name":'保定市',"value":303},
+       {"name":'唐山市',"value":304},
+       {"name":'秦皇岛市',"value":304}]
+	];
+
+  var selProvs = document.getElementsByName("provs")[0];
+
+  //反复点击同一项，不会触发change
+  selProvs.onchange=function () {
+      //要修改的元素
+      var selcities = document.getElementsByName("cities")[0];
+      //获得select本身
+      var selProvs=this;
+      //获得当前select选中项的位置
+      var selectedI = selProvs.selectedIndex;//自带函数 selectedIndex 获得select下选中的option的下标位置
+      //如果选中的位置是0 就隐藏selcities
+      if(selectedI==0){
+          //就隐藏旁边的select
+          selcities.className="hide";//display:none
+          return ;//并退出函数
+      }
+
+
+      //去cities数组中获得selectedI-1位置的子数组
+      var cts=cities[selectedI-1];
+      //创建片段文档
+      var frag = document.createDocumentFragment();
+      //再添加一个 请选择 到frag中
+      frag.appendChild(
+          new Option('-请选择-')
+      );
+      //遍历旁边新出来的select cts数组
+      for(var key of cts){
+          //将opt加入到片段文档
+          frag.appendChild(
+              new Option(key.name,key.value)
+          )
+      }
+      //将frag整体追加到selcities 清空selecties的内容
+      selcities.innerHTML="";
+      selcities.appendChild(frag);
+      selcities.className="";//清除hide 清除隐藏效果，显示 selcities内容
+  };
+//  var selCts = document.getElementsByName("cities")[0];
+//  selCts.onchang=function () {
+//      console.log('您选择的是'+this.value);
+//  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

@@ -27,6 +27,54 @@
 
 //原理，Let其实就是一个匿名函数自调用
     //将来声明变量都用let
+    var eid=1001;
+    function intrSelf() {
+        console.log("我的编号是"+this.eid);
+    }
+    var friends=["亮亮","然然","东东"];
+var eric={
+    eid,
+    ename:"asd",
+    intrSelf,
+    friends,
+    run(){
+        console.log("啦啦啦")
+    }
+};
+eric.run();
+console.log(eric)
+
+    //封装   ES6
+    class Student
+    {
+        //构造函数名提升为class名，所有构造函数更名为constructor
+        constructor(sname, sage) {
+            this.sname = sname;
+            this.sage = sage;
+        }
+        intrSelf () {
+            console.log("im" + this.sname + "年龄" + this.sage)
+        }
+    }
+    var lilei=new Student("li lei ",11);
+    var hmm= new Student("Han meimei",12);
+    console.log(lilei);
+    console.log(hmm);
+    lilei.intrSelf();
+//在ES5中，构造函数和原型对象时分开定义的，不符合封装的要求
+    //今后只要希望创建一种自定义类型时，都用class
+    /*用class{}包裹构造函数和原型对象方法
+    * 构造函数提名升为class名，所有构造函数从此统一更名为constructor
+    * 不需要加类型名.prototype*/
+
+
+
+
+
+
+
+
+
 
 
 

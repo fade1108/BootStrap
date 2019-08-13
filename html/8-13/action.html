@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="pop">12321321</div>
+<script>
+    /*一个事件属性，只能绑定处理一个函数
+    * DOM元素.addEventListener("事件名")
+    *         添加   事件  监听
+    *
+    * */
+    //js中添加事件监听对象的/*方式
+    //  DOM元素.addEventListener("事件名",事件处理函数)
+    A.onclick=function () {
+        console.log('发射皮皮猪')
+    };
+    function pdd() {
+        alert("发射象拔蚌");
+    }
+    B.onclick=function () {
+        A.addEventListener("click",pdd)
+    };
+    //移除事件监听
+    C.onclick=function () {
+        A.removeEventListener("click",pdd)
+    }
+/*事件对象。希望获得事件相关的信息时。希望改变事件模型的默认行为
+*
+* 事件对象，总是作为处理函数的第一个参数自动传入
+* 取消冒泡
+* e.stopPropagation()//取消冒泡
+* 事件委托/利用冒泡
+* e.preventDefault()阻止默认属性
+*
+* e.target 代替this
+* if(e.target.nodeName=="yuansu"){
+* }
+*
+* 鼠标位置
+* 开关为一个Bool
+*当鼠标按下时打开开关
+* 当鼠标在文档显示区移动时，只有开关开着的时候，才自动获得鼠标位置，并算出图片位置
+*  当鼠标从图片上抬起时，关闭开关
+*
+*
+*/
+
+var canMove = false;
+var offsetX,offsetY=0;
+pop.onmousedown=function () {
+    canMove=true;
+    offsetX=e.offsetX;
+    offsetY=e.offsetY;
+};
+window.onmousemove=function (e) {
+    if(canMove){
+        var x=e.clientX;
+        var y=e.clientY;
+        var left=x-offsetX;
+        var top=y-offsetY;
+
+        pop.style.cssText="left:"+left+"px";"top:"+top+"px"
+
+    }
+};
+
+pop.onmouseup=function () {
+    canMove=false
+}
+
+
+
+</script>
+</body>
+</html>

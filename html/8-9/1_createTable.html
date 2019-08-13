@@ -1,0 +1,83 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>动态创建表格</title>
+<meta charset="utf-8" />
+<style>
+	table{width:600px; border-collapse:collapse;
+		text-align:center;
+	}
+	td,th{border:1px solid #ccc}
+</style>
+    <h1>Welcome</h1>
+    <p>Welcome to my web site</p>
+
+</head>
+<body>
+	<div id="data">
+      <table>
+          <thead>
+          <tr>
+              <th>姓名</th>
+              <th>薪资</th>
+              <th>年龄</th>
+          </tr>
+          </thead>
+      </table>
+  </div>
+  <script>
+	var json=[
+    {"ename":"Tom",  "salary":11000, "age":25},
+    {"ename":"John", "salary":13000, "age":28},
+    {"ename":"Mary", "salary":12000, "age":25}
+  ];
+	//创建tbody并追加到table
+      var table = document.querySelector("#data>table");
+      function createAppend(element,father) {
+          //封装一个方法 方法作用：创建一个table 下的子元素。在子元素下再添加一个子元素
+          var newelement=document.createElement(element);
+          //如果给了指定的父元素，就追加到父元素
+          if(father!==undefined){
+              father.appendChild(newelement);
+          }
+          return newelement;
+      }
+
+
+      var tbody=createAppend("tbody");
+      for(var emp of json){
+          //每遍历一个员工对象，就创建一个tr
+          var tr = createAppend("tr",tbody);
+          for (var key in emp){
+              //每遍历一个属性，就创建一个td元素并追加到tr中
+              var td = createAppend("td",tr);
+              td.innerHTML=emp[key];
+          }
+      }
+      table.appendChild(tbody);
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+  <script>
+      var a=document.createElement("a");
+      a.href="javascript:;";
+      a.innerHTML="点我";
+      //document.body.appendChild(a);
+      //将a插入在p之前
+      var p = document.body.children[1];
+      document.body.insertBefore(a,p);
+
+  </script>
+
+</body>
+</html>

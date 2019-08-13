@@ -98,17 +98,17 @@
                 <img class="w-100" src="banner4.png">
             </div>
 
-            <!--2.左右箭头-->
-            <a data-slide="prev" href="#lunbo" class="carousel-control-prev">
-              <span class="carousel-control-prev-icon">
+            <!--&lt;!&ndash;2.左右箭头&ndash;&gt;-->
+            <!--<a data-slide="prev" href="#lunbo" class="carousel-control-prev">-->
+              <!--<span class="carousel-control-prev-icon">-->
 
-              </span>
-            </a>
-            <a data-slide="next" href="#lunbo" class="carousel-control-next">
-              <span class="carousel-control-next-icon">
+              <!--</span>-->
+            <!--</a>-->
+            <!--<a data-slide="next" href="#lunbo" class="carousel-control-next">-->
+              <!--<span class="carousel-control-next-icon">-->
 
-              </span>
-            </a>
+              <!--</span>-->
+            <!--</a>-->
             <!--3.轮播指示器-->
             <ul class="carousel-indicators">
                 <li data-slide-to="0" data-target="#lunbo" class="active"></li>
@@ -173,7 +173,7 @@
     <br>
     <hr>
     <h1>3胶囊导航</h1>
-    <ul class="nav  nav-pills">
+    <ul class="nav  nav-pills flex-column">
         <li class="nav-item">
             <a data-toggle="pill" href="#tab5" class="nav-link">口红</a>
         </li>
@@ -258,14 +258,21 @@
     <hr>
     <h1>手风琴效果（卡片＋折叠）</h1>
     <div id="parent">
-        <!--     collapse 和 card-body 在一个div里，会卡-->e
+        <!--     collapse 和 card-body 在一个div里，会卡-->
         <div class="card">
-            <div class="card-header">
-                <a class="card-link" data-toggle="collapse" href="#c1">卡片1</a>
+            <div class="card-header p-0 ">
+                <button class="btn-dark btn w-100">
+                    <a class="card-link text-white list-unstyled" style="font-size: 20px" data-toggle="collapse" href="#c1" >卡片1</a>
+                </button>
             </div>
             <div data-parent="#parent" id="c1" class="collapse">
-                <div class="card-body ">
-                    <button class="btn-primary btn">你好啊</button>
+                <div class="card-body p-0">
+                    <button class="btn btn-danger w-100"><a class="text-white card-link "  href="">用户管理</a></button><br>
+                    <a href="">Tempor</a><br>
+                    <a href="">Congue</a><br>
+                    <a href="">Mazim</a><br>
+                    <a href="">Mutationem</a><br>
+                    <a href="">Hendreit</a>
                 </div>
             </div>
         </div>
@@ -275,7 +282,11 @@
             </div>
             <div data-parent="#parent" id="c2" class="collapse">
                 <div class="card-body ">
-                    asdkjsakljdklsajdklsjakldjsakd
+                    <a href="">Women's</a><br>
+                    <a href="">Sub Category1</a><br>
+                    <a href="">Sub Category2</a><br>
+                    <a href="">Sub Category3</a><br>
+                    <a href="">Sub Category4</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>...</title>
+  <script>
+  </script>
+ </head>
+  
+ <body>
+    <button id="A">发射皮皮猪</button><br>
+    <button id="B">获得发射象拔蚌的能力</button><br>
+    <button id="C">失去发射象拔蚌的能力</button><br>
+
+
+
+
+ <script>
+     //js中添加事件监听对象的/*方式
+     //  DOM元素.addEventListener("事件名",事件处理函数)
+        A.onclick=function () {
+            console.log('发射皮皮猪')
+        };
+        function pdd() {
+            alert("发射象拔蚌");
+        }
+        B.onclick=function () {
+            A.addEventListener("click",pdd)
+        };
+        //移除事件监听
+     C.onclick=function () {
+         A.removeEventListener("click",pdd)
+     }
+
+
+
+ </script>
+ </body>
+</html>

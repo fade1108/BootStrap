@@ -6,6 +6,98 @@
 </head>
 <body>
 <script>
+var lilei={
+    sname:"Li lei",
+    friends:["jack","rose","tom","jerry"],
+    intrSelf:function () {
+        this.friends.forEach(
+            function (fname) {
+                console.log('${this.name}认识 ${fname}')
+            }.bind(this)//通过bind将正确的this注射进去
+        )
+    }
+};
+
+lilei.intrSelf();
+
+//只要回调函数中的this错了，只能用bind换
+
+//for of 循环
+//    for(var elem of 数组){
+//        //of依次取出数组中每个保存在of前的变量中
+//    }
+    var arr=["亮亮","然然","东东"]
+//    for(var i=0;i<arr.length;i++){
+//
+//}
+    arr.forEach(
+        elem=>console.log(elem+"到"),
+
+
+    );
+for(var ename of arr){
+        console.log(ename+"到")
+}
+</script>
+
+<button onclick="numbers.forEach(myFunction)">点我</button>
+    <p id="demo"></p>
+
+<script>
+demoP = document.getElementById("demo");
+var numbers = [4, 9, 16, 25];
+
+function myFunction(item, index) {
+    demoP.innerHTML = demoP.innerHTML + "index[" + index + "]: " + item + "<br>";
+}
+</script>
+<script>
+    var result={};
+    var str="helloworld";
+    for(var char of str){
+        console.log(char ,typeof char)
+        if(result[char]===undefined){
+            result[char]=1;
+
+        }else {
+            result[char]+=1;
+
+        }
+    }
+    var result1={fade:1,b:2,c:3};
+    console.log(result1);
+   result1["h"]=1;
+   console.log(result1);
+
+
+
+
+
+    function  add() {
+        var sum=0;
+        for(var val of arguments){
+            sum+=val;
+
+        }
+        return sum;
+    }
+console.log(add(1,2,3,4));
+    //es6中的for of支持数组，支持对象，支持字符串
+    /*for (var char of 数组)  of依次取出数组中的每个保存在of前的变量里*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -19,6 +111,10 @@
 
 
 </script>
+
+
+
+
 
 
 

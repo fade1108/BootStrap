@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    /*spead
+    * 代替apply
+    *
+    * 今后只要希望将一个数组整体打散成单个值
+    *
+    * */
+    var arr=[2,5,7,1];
+    console.log(
+        Math.max(...arr),
+        Math.min(...arr)
+    )
+    var obj1={
+        x:1,Y:2,z:3
+    };
+    var obj2={
+      b:3,
+      g:3,c:4
+
+    };
+    //合并两个对象，合并俩个数组
+    var obj={...obj1,...obj2};
+
+    console.log(obj)
+    //数组的解构
+    var date = [2019,8,5]
+    var  [y,m,d]=date;
+    console.log(y,m,d)
+
+    //对象解构
+    var user={
+        signin:function () {
+            console.log("登录")
+        },
+        signout:function () {
+            console.log("注册")
+        },
+        changePwd:function () {
+            console.log("修改密码")
+        }
+    };
+//var {signin:login,signout:regist}=user;
+//es6
+    //对象的解构
+    var {signin,signout}=user;
+    signin();
+    signout();
+    //参数解构 在定义函数和调用函数时，采用对象解构传递参数
+//d定义函数时，形参就写成对象语法  终极写法
+    //es6终极写法
+    function cook({dan="鸡蛋",cai="上海青",mian:mian}) {
+       mian=mian||"土豆面";
+        console.log(dan+cai+mian)
+    }
+    //2调用函数时,将实参赋值给形参
+    cook({
+        dan:"火腿肠"
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

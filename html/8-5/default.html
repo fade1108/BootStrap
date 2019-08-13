@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--默认参数值default-->
+<script>
+    function indexof(arr,elem,formi=0) {
+        //如果from 不是false,"",undefined,null,nan 就用fromi继续后续执行
+        //formi=fromi||0;
+        //从formi位置开始遍历数组中剩余元素
+        //拿到位置
+        for(var i=formi;i<arr.length;i++){
+            //每遍历一个元素就用当前元素值和给的elem值做比较。
+            if(elem===arr[i]){
+                return i;//只要碰上相等的，就返回当前位置i并退出函数
+            }
+        }
+        //如果循环结束都没有退出，说明一个相同的都没找到到
+        return -1;
+    }
+    var arr=[1,2,3,4,5,4,3,2,1];
+    console.log(
+        indexof(arr,3),//2
+        indexof(arr,3,3)//6
+    )
+
+</script>
+<script>
+
+    //今后只要使用arguments的地方，都可用rest语法代替
+    //rest语法： ...数组名 ，箭头函数中无法使用arguments
+
+function calc(ename,...arr) {
+   console.log(
+     //  ename+"的总工资是"+arr.reduce((prev,elem)=>prev+elem,0)
+       ename + "总工资是" +arr.reduce( (prev,elem)=> prev+elem,0)
+
+   )
+
+}
+calc("Li lei",10000,1000,2000);
+
+
+//打散数组
+
+    /*spead
+    * 代替apply
+    *
+    * 今后只要希望将一个数组整体打散成单个值
+    *
+    * */
+var a={naem:1,baby:2}
+console.log(a["naem"]);
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

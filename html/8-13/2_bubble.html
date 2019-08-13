@@ -1,0 +1,33 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>事件处理</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="2.css"/>
+		
+	</head>
+	<body>
+		<div id="d1" >1
+			<div id="d2" >2
+				<div id="d3">3</div>
+			</div>
+		</div>
+    <script>
+
+
+			d1.onclick=function (e) {
+			    e.stopPropagation();//取消冒泡
+					alert(1);
+      };
+      d2.onclick=function (e) {
+			    e.stopPropagation();
+          alert(2);
+      };
+      d3.onclick=function (e) {
+          e.stopPropagation();
+          alert(3);
+      }
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    /*Navigator 对象包含有关浏览器的信息。
+    *
+    * plugins[]
+返回对文档中所有嵌入式对象的引用。
+
+该集合是一个 Plugin 对象的数组，其中的元素代表浏览器
+已经安装的插件。
+Plug-in 对象提供的是有关插件的信息，其中包括它所支持的
+MIME 类型的列表。
+
+虽然 plugins[] 数组是由 IE 4 定义的，
+但是在 IE 4 中它却总是空的，因为 IE 4 不支持插件和 Plugin 对象。
+
+
+
+判断浏览器名称和版本号：
+    *
+    * */
+    var plugins=navigator.plugins;
+    if(plugins["Chrome PDF Viewer"]===undefined){
+        document.write('未安装')
+    }else {
+        document.write('已安装')
+    }
+    //判断浏览器名称和版本号
+    /*浏览器的名称和版本号都包含在navigator的userAgent属性中
+    但是,userAgent是一个巨大的字符串。用字符串超找的方式 提取判断*/
+    console.log(navigator.userAgent);
+    document.write("<h1>"+navigator.userAgent+"<h1>");
+    var ua = navigator.userAgent;
+    var browser,version;
+    if(ua.indexOf("MSIE")!=-1){
+        browser="IE"
+    }else if(ua.indexOf("Trident")!=-1){
+        browser="IE",version=11;
+    }else  if(ua.indexOf("Firefox")){
+        browser="Firefox";
+    }else  if(ua.indexOf("Chrome")){
+        browser="Chrome";
+    }else  if(ua.indexOf("Safari")){
+        browser="Safari";
+    }
+    document.write(browser);
+    //如果还不知道浏览器版本号是
+    if(version===undefined){
+        //获得浏览器名称在ua中的位置
+        var i = ua.indexOf(browser);
+        i+=browser.length;
+        //从新i位置后截3为
+        version=ua.slice(i,i+3);
+
+    }
+    document.write(version)
+</script>
+
+</body>
+</html>

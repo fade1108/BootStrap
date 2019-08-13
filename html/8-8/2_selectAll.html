@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>全选和取消全选</title>
+	<style>
+		tbody input:checked{
+     color: #00B7FF;
+		}
+	</style>
+</head>
+<body>
+	<h2>管理员列表</h2>
+	<table border="1px" width="500px">
+	  <thead>
+		<tr>
+			<th>
+				<label>
+					<input  type="checkbox"/>全选
+				</label>
+			</th>
+			<th>管理员ID</th>
+			<th>姓名</th>
+			<th>操作</th>
+		</tr>
+	  </thead>
+	  <tbody>
+	  	<tr>
+	  		<label><td><input type="checkbox"/></label><span>啦啦啦</span></td>
+	  		<td>1</td>
+	  		<td>Tester</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  		<label><td><input type="checkbox"/></label><span>啦啦啦</span></td>
+	  		<td>2</td>
+	  		<td>Manager</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  	<lable>	<td><input type="checkbox"/></lable></td>
+	  		<td>3</td>
+	  		<td>Analyst</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  	<tr>
+	  	<label><td><input type="checkbox"/></label></td>
+	  		<td>4</td>
+	  		<td>Admin</td>
+	  		<td>修改 删除</td>
+	  	</tr>
+	  </tbody>
+	</table>
+	<button>删除选定</button>
+  <script>
+    var chbAll = document.querySelector("thead input");
+    chbAll.onclick=function () {
+        var chbs = document.querySelectorAll("tbody input");
+        for (var chb of chbs){
+            chb.checked=chbAll.checked;
+        }
+    };
+
+    var chbs = document.querySelectorAll("tbody input");
+		for(var chb of chbs){
+		    chb.onclick=function () {
+						var chbAll = document.querySelector("thead input");
+						var chb =this;
+						if(chb.checked==false){
+						    chbAll.checked=false;
+						}else {
+						    if(document.querySelector("tbody input:not(:checked)"==null)){
+						        chbAll.checked=true;
+								}
+								chbAll.checked=true;
+						}
+        }
+		}
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

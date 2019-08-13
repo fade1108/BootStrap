@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>\
+    <!--<script src="Promise.js"></script>-->
+</head>
+<body>
+<script>
+    function liang() {
+        return new Promise(
+            function (door) {
+                var bang ="liang de jieli bang "
+                console.log("亮亮开始起跑");
+                setTimeout(
+                    function () {
+                            console.log("亮亮到达终点");
+                            door(bang);
+                    }
+                ),5000
+            }
+        )
+    }
+    function ran() {
+        return new Promise(
+            function (door) {
+                var bang ="ran de jielibang "
+                console.log("然然开始起跑");
+                setTimeout(
+                    function () {
+                            console.log("然然到达终点");
+                            door(bang);
+
+                    },2000
+                )
+            }
+        )
+    }
+    function dongdong() {
+        return new Promise(
+            function (door) {
+                var bang="东东的棒子";
+                console.log("东东开始起跑");
+                setTimeout(
+                    function () {
+                        console.log("东东到达终点");
+                        door(bang);
+                    },2000
+                )
+            }
+        )
+
+    }
+    Promise.all(//数组中要求必须传入new Promise对象
+        [
+            liang(),
+            ran(),
+            dongdong()
+        ]
+    ).then( (arr)=>{
+        console.log("比赛结束");
+        console.log("收到以下接力棒"+arr);
+    })
+
+//    liang().then(ran).then(dongdong).then(function () {
+//        console.log("比赛结束")
+//    })
+
+
+
+
+
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
