@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 id="msg">5s后自动关闭</h1>
+<a id="astop" href="javascript:;">留在本页面</a>
+<script>
+    //任务函数
+    function task() {
+        //取得h1的内容中的数字  将数字-1 将数字拼接回h1的内容中
+        var n = parseInt(msg.innerHTML)
+        if (n>0 ){
+            n--;
+            msg.innerHTML=n+"S后自动关闭窗口";
+
+
+
+        }else if(n==0){
+            window.close();
+        }
+
+
+    }
+    //setInterval函数由clearInterval()执行 停止
+    //setInterval(function,s数)
+    var timer=setInterval(task,1000);
+    /*setInterval() 方法会不停地调用函数，
+    直到 clearInterval() 被调用或窗口被关闭。
+    由 setInterval()
+    返回的 ID 值可用作 clearInterval() 方法的参数*/
+    astop.onclick=function () {
+        clearInterval(timer);
+    }
+</script>
+
+
+</body>
+</html>

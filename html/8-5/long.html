@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        body{
+            font-size: 12px;
+            line-height: 24px;
+            text-align: center; /*居中显示*/
+        }
+        ul{
+            list-style: none;
+            width: 375px;
+        }
+        a img{border: none}
+        a{
+            color: #333;
+            text-decoration: none;
+        }
+        a:hover{color: #ff0000;}
+        #moocTitle{
+            font-size: 24px;
+            color: #fff;
+            border-bottom: 5px solid #fff;
+            padding: 5px;
+            background-color: #ff0000;
+            border-radius: 10px 10px 0 0;
+        }
+        #mooc{
+            width: 399px;
+            border: 5px solid #ababab;
+            border-radius: 15px;/*圆角*/
+            box-shadow: 2px 2px 10px #ababab;/*阴影*/
+            margin: 50px auto 0;
+            text-align: left;
+        }
+        #moocBox{
+            width: 399px;
+            height: 100px;
+            overflow: hidden;/*超出内容部分隐藏*/
+        }
+        #mooc ul li{height: 24px;}
+        #mooc ul li a{
+            width: 180px;
+            float: left;
+            display: block;
+            overflow: hidden;
+            text-indent: 15px;/*首行缩进*/
+            height: 24px;
+        }
+        #mooc ul li span{
+            float:right;
+            color: #999;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="mooc">
+    <h3 id="moocTitle">最新课程</h3>
+    <div id="moocBox">
+        <ul id="con1">
+            <li>< a href=" ">学会html5 绝对的屌丝逆袭</a><span>2013-09-18</span></li>
+            <li>< a href="#">tab页面切换效果</a><span>2013-10-08</span></li>
+            <li>< a href="#">圆角水晶按钮制作</a><span>2013-10-10</span></li>
+            <li>< a href="#">HTML+CSS基础课程</a><span>2013-10-15</span></li>
+            <li>< a href="#">分页页码制作</a><span>2014-05-18</span></li>
+            <li>< a href="#">导航条菜单的制作</a><span>2014-06-08</span></li>
+            <li>< a href="#">信息列表制作</a><span>2015-09-20</span></li>
+            <li>< a href="#">下拉菜单制作</a><span>20115-11-28</span></li>
+            <li>< a href="#">如何实现“新手引导”效果</a><span>2016-02-23</span></li>
+        </ul>
+        <ul id="con2">
+
+        </ul>
+    </div>
+    <script>
+
+            var area=document.getElementById("moocBox");
+            area.scrollTop=0;//初始化对象滚动条的距离
+            var con1=document.getElementById('con1');
+            var con2=document.getElementById('con2');
+            con2.innerHTML=con1.innerHTML;
+        function scrollup(){
+            if(area.scrollTop>=con1.offsetHeight){
+                area.scrollTop=0
+            }else {
+                area.scrollTop++;//
+            }
+        }
+            //声明定时器
+            var timer = null;
+            //解决暴力用户，在开启定时器之前最好清除一下定时器
+            clearInterval(timer);
+            //开启定时器
+            timer=setInterval(scrollup,50);
+            //为对象设置鼠标事件
+         area.onmouseover=function () {
+             clearInterval(timer);
+         };
+         //为对象设置鼠标画出事件
+         area.onmouseout=function () {
+             timer=setInterval(scrollup,50);
+         }
+
+
+    </script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

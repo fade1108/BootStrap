@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .score {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .score li {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border: 1px solid #f00;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h3>请打分</h3>
+<ul class="score">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+  /*        方法    选择器*/
+$("ul").on("click","li",function () {
+    var i=$("ul>li").index(this);//给他dom元素
+    //i和<i位置的li背景变为黄色
+    $(`ul>li:lt(${i+1})`).css("backgroud-color","yellow");
+    //I之后为值的li
+    $(`ul>li:gt(${i})`).css("background-color","yellow")
+})
+
+</script>
+</body>
+</html>

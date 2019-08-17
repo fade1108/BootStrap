@@ -22,14 +22,33 @@
 			//目标元素进行验证
 			keys.onclick=function (e) {
 			    if(e.target.nodeName=="BUTTON")	{
-              alert(e.target.innerHTML+"疼")
+			        switch (e.target.innerHTML){
+                  case "C":
+                      sc.value="";
+                      break;
+									case "=":
+									    if(sc.value!==""){
+									        try{
+									            sc.value=eval(sc.value);
+													}catch (err){
+									            sc.value=err;
+													}
+											}
+											break;
+							}
+
 
 			    }
 
-      }
+
       //如何获得实际点击的目标元素呢
 			//用e.target代替this  e.target始终保存目标元素的特殊属性
 			//如何鉴别目标元素是否想要  先验证目标元素特征
+			switch (e.target.innerHTML){
+					case "C":
+
+				}
+      }
 		</script>
 	</body>
 </html>

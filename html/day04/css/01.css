@@ -1,0 +1,20 @@
+.mybtn {
+  background-color: #0aa;
+  color: #fff;
+  height: 2.5rem;
+  width: 8rem;
+  display: block;
+  border-radius: 0.25rem;
+  text-decoration: none;
+  text-align: center;
+  line-height: 2.5rem; }
+  .mybtn:hover {
+    color: #f10215; }
+
+nav a, div a, h1 a {
+  color: #fff; }
+
+div {
+  border-style: solid;
+  border-width: 10px;
+  border-color: #0b2e13; }

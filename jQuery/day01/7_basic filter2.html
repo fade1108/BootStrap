@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8" />
+ <title>...</title>
+ <style>
+	table{
+      width: 500px;
+      border-collapse: collapse;
+      text-align: center;}
+  /*}th{*/
+       /*border-bottom: 3px solid #f1b0b7;*/
+   /*}*/
+  /*tbody>tr+tr{*/
+      /*border-top: 1px solid crimson;*/
+  /*}*/
+  /*tbody>tr:nth-child(2n){*/
+      /*background-color: #ffc107;*/
+  /*}*/
+
+ </style>
+</head>
+<body>
+
+  <h1>实现按钮组效果</h1>
+  
+	<div style="clear:both"></div>
+
+	<h1>实现表格隔行变色效果</h1>
+  <table>
+      <tbody>
+      <tr>
+          <th>1</th>
+          <th>2</th>
+          <th>3</th>
+          <th>4</th>
+      </tr>
+
+        <tr>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+          <td>4</td>
+        </tr>
+      </tbody>
+  </table>
+  <script src="../js/jquery-1.11.3.js"></script>
+<script>
+   $("tr>th").css("border-top","1px solid black")
+    $("tbody>tr:odd").css("background-color","blue")
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8">
+ </head>
+ <body>
+	<h1>操作元素的属性</h1>
+	<img src="img/1.jpg" alt="1">
+	<script src="js/jquery-1.11.3.js"></script>
+	<script>
+var $img = $("img");
+
+		$img.click(function () {
+        var $img=$(this);
+        var i = $img.attr("alt");
+        i<4?i++:(i=1);
+        $img.prop({alt:i,
+        src:`img/${i}.jpg`
+        })
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</script>
+ </body>
+</html>
