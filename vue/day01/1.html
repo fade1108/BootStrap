@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+    <!--今后只要保存html片段时。用v-html
+    v-once 所有要更新的元素都保存在虚拟dom树种 只在开始时运行一次
+    v-pre:万一内容中包含{{}}  阻止vue编译
+    -->
+    <h2  v-html="content"></h2>
+    <h2 v-cloak>{{content}}</h2>
+</div>
+
+<script>
+   new Vue({
+       el:"#app",
+       data:{
+           content:`<p>来自星星的你<a href="javascript:;">还需要多久多长，多难忘</a>`
+       }
+   });
+
+
+</script>
+</body>
+</html>
