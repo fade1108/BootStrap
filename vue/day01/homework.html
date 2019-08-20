@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<ul id="nav">
+    <li>
+        <ul>
+            <li>姓名：</li>
+            <li >{{score}}</li>
+            <li>{{uname}}</li>
+            <li >{{score}}</li>
+            <li >积分：</li>
+            <li>{{score}}</li>
+        </ul>
+
+        <ul>
+            <li>Welcome</li>
+            <li>{{score}}</li>
+            <li>{{uname}}</li>
+        </ul>
+    </li>
+</ul>
+<button @click="push">点</button>
+
+
+
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            uname:"dingding",
+            score:3000,
+
+        },
+        methods:{
+
+
+        }
+
+
+
+    });
+    function getChildren(parent) {
+        var children = parent.children;
+        for(var c of children){
+            if(c.children().length){
+
+            }else {
+
+            if(c.innerHTML=="{{uname}}"){
+                c.innerHTML=data.uname;
+            }else if(c.innerHTML="{{score}}"){
+                c.innerHTML=data.score
+            }
+        }
+        }
+    }
+
+    Object.defineProperties(data,{
+        _uname:{
+            value:data.uname,
+            writable:true,
+            enumerable:false
+        },
+        uname:{
+          get(){
+              return this._uname
+          }  ,
+          set(value){
+              this._uname=value;
+              for(var obj of arr){
+                  if(obj.innerHTML=="{{uname}}"){
+                    obj.elem.innerHTML=value;
+                  }
+              }
+          }
+        }
+
+    });
+    object.seal(data);
+
+
+
+
+</script>
+</body>
+</html>

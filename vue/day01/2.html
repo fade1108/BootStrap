@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<button>Click me</button>
+</div>
+<script src="../js/jquery-1.11.3.js"></script>
+<script>
+    if(showBtn){
+        var btn = $("<button>Click me</button>");
+        btn.on("click",function () {
+            console.log("clicked!");
+        });
+        $("#app").append(btn);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-model="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,
+initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/vue.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <style>
+        #pop{
+            width: 100px;
+            height: 100px;
+            background-color: #ffc107;
+            cursor: pointer;
+        }
+        .vali_info{
+            display: none;
+        }
+        .vali_success,.vali_fail{
+            background-repeat:no-repeat;
+            background-position:left center;
+            display:inline-block;
+        }
+        /* 验证消息：验证通过时的样式 */
+        .vali_success{
+            background-image:url("../img/ok.png");
+            padding-left:20px;
+            width:0px;height:20px;
+            overflow:hidden;
+        }
+        /* 验证消息：验证失败时的样式 */
+        .vali_fail{
+            background-image:url("../img/err.png");
+            border:1px solid red;
+            background-color:#ddd;
+            color:Red;
+            padding-left:30px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--vue中 事件修饰符： 限制触发这个事件的键盘号-->
+<input type="text" v-model:value="kwords" :placeholder="placeholder" @keydown.13="search">
+    <button class="btn btn-dark"
+            @click="search">百度一下</button>
+    <h1>性别：{{sex}}</h1>
+    <input type="radio" value="1" v-model:checked="sex">男
+    <input type="radio" value="0" v-model:checked="sex">女
+    <input type="checkbox" v-model:checked="isAgree">统一<br>
+    <button class="btn btn-primary" :disabled="!isAgree">提交</button>
+    <select v-model:value="src">
+        <option value="../img/bj.jpg">北京</option>
+        <option value="../img/sh.jpg">上海</option>
+        <option value="../img/hz.jpg">杭州</option>
+    </select><br>
+    <img :src="src">
+    <div id="pop" style="position: fixed" :style="popStyle">
+    </div>
+    <br>
+
+
+
+    <!--边输入边验证-->
+    <input class="mt-5" v-model:value="phone" @focus="getFocus"  placeholder="请输入手机号">
+    <span  :class="spanClass">请输入正确的手机号</span>
+
+
+
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            kwords:"",
+            placeholder:"请输入关键词",
+            sex:0,
+            isAgree:false,
+            src:"../img/bj.jpg",
+            popStyle:{
+                left:"500px",
+                top:"500px"
+            },
+            phone:"",
+            spanClass:{
+                vali_info:true,
+                vali_success:false,
+                vali_fail:false
+            }
+
+        },
+        methods: {
+            search(){
+                console.log(`查找${this.kwords}相关内容`)
+            },
+            getFocus(){
+              this.spanClass.vali_info=this.spanClass.vali_success=
+                  this.spanClass.vali_fail=false
+            }
+
+        },
+        watch:{
+            kwords(){
+                this.search();
+            },
+            phone(){
+                if(/^1[3-9]\d{9}$/.test(this.phone)){
+                    this.spanClass.vali_info=
+                        this.spanClass.vali_fail=false;
+                    this.spanClass.vali_success=true;
+                }else {
+                    this.spanClass.vali_info=
+                        this.spanClass.vali_success=false;
+                    this.spanClass.vali_fail=true;
+                }
+
+            }
+        }
+
+
+    });
+    window.onkeydown=function (e) {
+        if(e.keyCode==37){
+            var left = parseFloat(vm.popStyle.left);
+            left-=20;
+            vm.popStyle.left=left+"px";
+        }else if(e.keyCode==38){
+            var top=parseFloat(vm.popStyle.top);
+            top-=20;
+            vm.popStyle.top=top+"px";
+        }else if(e.keyCode==39){
+            var left = parseFloat(vm.popStyle.left);
+            left+=20;
+            vm.popStyle.left=left+"px";
+        }else if(e.keyCode==40){
+            var top = parseFloat(
+                vm.popStyle.top
+            );
+            top+=20;
+            vm.popStyle.top=top+"px";
+        }
+    }
+
+
+</script>
+</body>
+</html>

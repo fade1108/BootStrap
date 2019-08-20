@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/vue.js"></script>
+    <style>
+        .block {
+            width: 100px;
+            height: 200px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--  每个的内容, 下标    data里的数组               -->
+    <div v-for="(arr,i) of emps" :key="i">
+
+        <h1>{{arr}}</h1>
+        <div class="block" @click="say(arr,$event)">
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            emps: ["亮亮", "然然", "东东"]
+        },
+        methods: {
+            say(name,e){
+                var {offsetX,offsetY} = e;
+                alert(`${name} ${offsetX},${offsetY}`)
+            }
+        }
+
+
+    })
+
+
+</script>
+</body>
+</html>

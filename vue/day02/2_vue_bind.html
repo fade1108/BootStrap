@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h1>您的积分是</h1>
+  <h2>{{score}}</h2>
+
+  <script>
+    var data={
+      score:3000
+    };
+
+    //虚拟DOM树
+    var arr=[];
+
+    function getChildren(parent){
+      var children=parent.children;
+      for(var c of children){
+        if(c.children.length>0){
+          getChildren(c);
+        }else{
+          if(c.innerHTML=="{{score}}"){
+            c.innerHTML=data.score;
+            arr.push({
+              elem: c,
+              innerHTML:"{{score}}"
+            });
+          }
+        }
+      }
+    }
+    //页面加载时至少要扫描一次
+    getChildren(document.body);
+    console.log(arr);
+/*
+* Object的defineProperty和defineProperties这两个方法在js中的重要性十分重要，
+* 主要功能就是用来定义或修改这些内部属性,
+* 与之相对应的getOwnPropertyDescriptor和getOwnPropertyDescriptors
+* 就是获取这行内部属性的描述。
+*
+*
+*
+*
+* */
+    //响应系统
+    Object.defineProperties(data,{
+      _score:{
+        value:data.score,
+        writable:true,
+        enumerable:false
+      },
+      score:{
+        get(){return this._score},
+        set(value){
+          this._score=value;
+          for(var obj of arr){
+            if(obj.innerHTML=="{{score}}"){
+              obj.elem.innerHTML=value;
+            }
+          }
+        },
+        enumerable:true
+      }
+    })
+    Object.seal(data);//Object.seal()方法封闭一个对象，阻止添加新属性并将所有现有属性标记为不可配置
+    //Object.prototype 属性的属性特性：
+/*
+    writable	true
+    enumerable	false
+    configurable	true
+*/
+
+    //测试代码:
+    setInterval(function(){
+      data.score+=100;
+    },2000)
+  </script>
+</body>
+</html>

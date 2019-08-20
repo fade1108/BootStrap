@@ -17,17 +17,48 @@
     v-once 所有要更新的元素都保存在虚拟dom树种 只在开始时运行一次
     v-pre:万一内容中包含{{}}  阻止vue编译
     -->
-    <h2  v-html="content"></h2>
-    <h2 v-cloak>{{content}}</h2>
+    <button @click="add2" id="btn1">象拔蚌{{m}}</button>
+    <button @click="add"  id="btn2">点我 ({{n}})</button>
+    <!--<h2  v-html="content"></h2>
+    <h2 v-cloak>{{content}}</h2>-->
 </div>
 
 <script>
-   new Vue({
+   /*new Vue({
        el:"#app",
        data:{
            content:`<p>来自星星的你<a href="javascript:;">还需要多久多长，多难忘</a>`
        }
    });
+*//*
+   var btn = document.getElementById("btn1");
+   btn.onclick=function () {
+       var btn = this;
+       var n = parseInt(btn.innerHTML.slice(9,-1));
+       console.log(n);
+       n++;
+       btn.innerHTML=`click me(${n})`
+   };
+   */
+
+   new Vue({
+       el:"#app",
+           data:{n:1,
+               m:3
+           },
+        methods:{
+
+            add:function () {
+                this.n++;
+
+            },
+            add2(){
+                this.m+=2
+            }
+           }
+
+   });
+
 
 
 </script>

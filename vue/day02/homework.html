@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/vue.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+</head>
+<body>
+<div id="app">
+<button class="btn btn-danger" @click="click" :disabled="Agree">{{text}}</button>
+
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            text:"请点击",
+            Agree:false,
+            n:60
+        },
+        methods: {
+            click(){
+                this.Agree=true;
+                setTimeout(function () {
+                    for (this.n;this.n<=60;this.n--){
+                        this.text=`${this.n}S开始倒计时`;
+                    }
+                },1000);
+
+            }
+        }
+
+
+
+    });
+    setTimeout(function () {
+        if(vm.n>=0){
+            vm.n--;
+        }
+    },1000)
+
+
+</script>
+</body>
+</html>

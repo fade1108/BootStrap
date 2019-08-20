@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<button @click="change">-</button>
+    <span>
+    {{n}}
+    </span>
+    <button @click="change">+</button>
+
+
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            n:1
+        },
+        methods: {
+            change(e){
+                if(e.target.innerHTML=="+"){
+                    this.n++;
+                }else if(this.n>1){
+                    this.n--;
+                }
+
+
+            }
+        }
+
+
+    })
+
+
+</script>
+</body>
+</html>

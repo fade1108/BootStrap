@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <span>{{now}}/{{page}}</span>
+    <button v-show="now<page" @click="next">
+        下一页
+    </button>
+</div>
+
+
+
+
+<script>
+var vm = new Vue({
+    el:"#app",
+    data:{
+        now:1,
+        page:5
+
+    },
+    methods:{
+        next(){
+            this.now++;
+        }
+    }
+
+
+})
+
+</script>
+</body>
+</html>

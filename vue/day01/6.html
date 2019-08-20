@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../js/vue.js"></script>
+    <script src="../js/jquery-1.11.3.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>
+        用户名:<span> <input id="dy" type="text"></span>
+        密码 :<span> <input id="di" type="password"></span>
+        <button @click="push">提交</button>
+    </div>
+    <div id="succeed" v-show="booll">
+        <h1>您已成功登录</h1>
+    </div>
+    <div id="falsed" v-show="bool2">
+        <h1>请输入账号密码后再点提交按键</h1>
+    </div>
+
+
+
+</div >
+
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            booll:false,
+            bool2:false
+        },
+        methods:{
+            push(){
+                if($("#dy").val()&&$("#di").val()!=""){
+                    this.booll=true;
+                    this.bool2=false;
+                }
+                else {
+                    this.bool2=true;
+                    this.booll=false;
+                }
+            }
+        }
+
+
+
+
+    })
+
+
+
+
+
+
+</script>
+</body>
+</html>

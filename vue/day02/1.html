@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/vue.js"></script>
+    <style>
+        ul{
+            list-style: none;
+        }
+        ul>li{
+            border: 1px solid #ffc107;
+            padding: 5px 10px;
+            margin: 5px 5px 5px 5px;
+            cursor: pointer;
+        }
+        ul>li:hover{
+            background-color: lightblue;
+        }
+        ul>li.active{
+            background-color: #00B7FF;
+            color: #f1b0b7;
+            border: none;
+        }
+        ul>li.disabled{
+            background-color: #e1edf7;
+            color: #666666;
+            border: 1px solid #aaaaaa;
+        }
+    </style>
+</head>
+<body>
+<!--
+<要反复生成的元素  v-for="(item,i)of 数组或数值">
+i 是下标
+
+
+-->
+<div id="app">
+    <!--<ul>
+        &lt;!&ndash;
+        vm.tasks.solicke(1,1,"值")
+
+        &ndash;&gt;
+        <li v-for="(val,i) of tasks" :key="i">{{i+1}}&#45;&#45;&#45;&#45; {{val}}</li>
+
+    </ul>-->
+    <ul ><!--@click="change"-->
+        <li :class="nowpage==1? 'disabled':'' ">上一页</li>
+
+
+        <li v-for="p of pages" :key="p" :class="p==nowpage?'active':''">
+            {{p}}
+        </li>
+
+
+        <li :class="nowpage==pages?'disabled':''">下一页</li>
+
+    </ul>
+
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            tasks:["吃饭","吃它八米","吃他妈比"],
+            pages:10,
+            nowpage:1 //当前页
+        },
+        methods:{
+           /* change(e){
+                if(e.target.nodeName=="LI"){
+                    switch (e.target.innerHTML){
+                        case "上一页":
+                            if(this.nowpage>1){
+                                this.nowpage--;
+                            }
+                            break;
+                        case "下一页":
+                            if(this.nowpage<this.pages){
+                                this.nowpage++;
+                            }
+                            break;
+                        default:
+                            this.nowpage = parseInt(e.target.innerHTML)
+                    }
+
+
+                }
+            }*/
+        }
+
+
+
+    })
+
+
+</script>
+</body>
+</html>

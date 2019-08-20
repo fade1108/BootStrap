@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/vue.js"></script>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+
+<h1 v-html="msg" v-text="msg" style="width: 200px;height: 800px
+; background-color: #ffc107;color: #0c5460;"></h1>
+</div>
+
+
+<script>
+    setTimeout(function () {
+        var vm = new Vue({
+            el: "#app",
+            data: {
+                msg:"<p>\n" +
+                "    <h>还需要多久多长，多渴望。 微笑像谎言一样。是最美丽的伪装\n" +
+                "    <a>感情只能隐藏，</a></h>\n" +
+                "</p>"
+
+            },
+
+
+
+        })
+    },2000)
+
+
+
+</script>
+</body>
+</html>
