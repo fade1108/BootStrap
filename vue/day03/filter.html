@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/vue.js"></script>
+    <script>
+        //进口是形参，出口是return   oldVal,其他形参
+        // 其他形参-----》实参值
+        //{{变量 | 过滤器(实参值|过滤器)}}
+        Vue.filter(
+            "sexFilter",
+            function (oldVal, lang="cn") {
+                if(lang=="cn"){
+                    return oldVal==1?"男":
+                        oldVal==0?"女":
+                            oldVal=="♂"?"♂男":"♀女";
+                }else {
+                    return oldVal==1?"Male":
+                        oldVal==0?"woman":
+                            oldVal=="♂"?"♀woman":"♂Male"
+                }
+            }
+        );
+        Vue.filter(
+          "statusFilter",
+          function (oldVal) {
+              return oldVal==0?"未付款":
+                  olVal=10?"已付款":
+                      oldVal=20?"已发货":"已签收"
+          }
+
+        );
+
+
+
+        Vue.filter(
+            //进口是形参，出口是return   oldVal,其他形参
+            // 其他形参-----》实参值
+            //{{变量 | 过滤器(实参值|过滤器)}}
+            "dateFilter",function (oldVal) {
+                return new Date(oldVal).toLocaleString();
+            }
+        );
+
+        Vue.filter(
+            "sexIcone",
+            function (oldVal) {
+                if(oldVal==1||oldVal=="男"||
+                oldVal=="Male"){
+                    return oldVal==1?"♂":oldVal+"♂"
+                }else {
+                    return oldVal==0?"♀":oldVal+"♀"
+                }
+            }
+
+
+
+
+
+
+
+
+
+
+
+        )
+    </script>
+</head>
+<body>
+<div id="app">
+<h1>性别{{sex1 | sexFilter("cn")}}</h1>
+    <h1>性别2{{sex2 | sexFilter("en")}}</h1>
+    <h2>订单状态:{{Status | statusFilter}}</h2>
+    <hr>
+    <br><br>
+    <h1>性别1():{{sex3 | sexFilter | sexIcone}}</h1>
+    <h1>性别2():</h1>
+
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el: "#app",
+        data: {
+            sex1:1,
+            sex2:0,
+            Status:0,
+            sex3:1,
+            sex4:0
+        },
+
+
+
+    })
+
+
+</script>
+</body>
+</html>

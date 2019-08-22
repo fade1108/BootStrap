@@ -8,23 +8,23 @@
       text-align: center;
     }
   </style>
+  <script src="../js/vue.js"></script>
 </head>
 <body>
-<h1>替换节点</h1>
+<div id="app">
+  <h1>替换节点</h1>
 
-<div id="chosen">
-  <img src="img/p0.png">
-</div>
-<hr/>
-<div id="list">
-  <img src="img/p3.png">
-  <img src="img/p4.png">
-  <img src="img/p5.png">
-</div>
+  <div id="chosen">
+    <img :src="src1">
+  </div>
+  <hr/>
+  <div id="list" >
+    <img v-for="(vall,m) in imgs" :key="m" :src="vall" @click="replace">
 
-<script src="js/jquery-1.11.3.js"></script>
+</div>
+</div>
 <script>
-  $("#list").click(function (e) {
+ /* $("#list").click(function (e) {
       var $target=$(e.target);
       //只有$target是Img时才执行后续操作
 
@@ -33,7 +33,25 @@
           $target.clone()
           .replaceAll("#chosen>img")
       }
-  })
+      input[type=radio]{display:none}
+  })*/
+ var vm = new Vue({
+     el: "#app",
+     data:{
+       src1: "../img/p0.png",
+         imgs:["../img/p3.png","../img/p4.png","../img/p5.png"]
+      },
+      methods:{
+         replace(e){
+          if(e.target.nodeName="IMG"){
+              console.log(e.target.nodeName);
+              this.src1=e.target.src;
+          }
+         }
+      }
+
+ })
+
 </script>
 </body>
 </html>

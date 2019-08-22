@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/vue.js"></script>
+    <script>
+        /*组件名就是 一个可重复使用的自定义的html标签*/
+        /*全局组件*/
+        Vue.component("my-counter",{
+            template:`<span><button @click="change(-1)" :disabled="Agree">-</button>
+                <span>{{n}}</span>
+                <button @click="change(+1)">+</button></span>`,
+            data(){
+                return{
+                    n:0,
+                    Agree:false
+                }
+            },
+            methods:{
+                change(i){
+                    this.n+=i;
+                    if(this.n<0){
+                        this.n=0;
+
+                    }
+
+
+
+
+
+                }
+            }
+
+        })
+
+
+    </script>
+</head>
+<body>
+<div id="app">
+  <ul>
+      <li>1 | 华为 5000 | <my-counter></my-counter>  | 10000</li>
+  </ul>
+
+</div>
+
+
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+
+        }
+    });
+
+
+
+
+
+
+</script>
+</body>
+</html>

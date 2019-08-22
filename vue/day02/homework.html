@@ -20,16 +20,28 @@
         data: {
             text:"请点击",
             Agree:false,
-            n:60
+            n:10
         },
         methods: {
             click(){
-                this.Agree=true;
-                setTimeout(function () {
-                    for (this.n;this.n<=60;this.n--){
-                        this.text=`${this.n}S开始倒计时`;
+                this.n=10;
+                //如果想用this.n 得用箭头函数。 用function 调用的是window下的this
+                let clock=window.setInterval(()=>{
+                    this.Agree=true;
+                    this.text=`${this.n}`;
+                    this.n--;
+                    if(this.n<0){
+                        this.n++;
+                        this.Agree=false;
+                        this.text="请再次点击";
+                        clearTimeout(clock);
                     }
-                },1000);
+
+                },1000)
+
+
+
+
 
             }
         }
@@ -37,13 +49,6 @@
 
 
     });
-    setTimeout(function () {
-        if(vm.n>=0){
-            vm.n--;
-        }
-    },1000)
-
-
 </script>
 </body>
 </html>

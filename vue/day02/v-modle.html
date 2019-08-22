@@ -65,7 +65,11 @@ initial-scale=1.0">
 
 
 
-    <!--边输入边验证-->
+    <!--边输入边验证
+    简写 v-model="phone"
+    双向绑定，监控input value
+    -- -->
+
     <input class="mt-5" v-model:value="phone" @focus="getFocus"  placeholder="请输入手机号">
     <span  :class="spanClass">请输入正确的手机号</span>
 

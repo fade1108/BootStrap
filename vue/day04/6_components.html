@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="../js/vue.js"></script>
+  <script >
+      var todoItem={
+          template:`
+  <li>
+    {{i+1}} - {{task}} <button @click="del">x</button>
+  </li>`,
+          props:["task","i","tasks"]
+          ,
+          methods:{
+              del(){
+                  this.tasks.splice(this.i,1)
+              }
+          }
+      };
+  </script>
+  <script >
+      var todoList = {
+          template:`
+                       <ul>
+                        <todo-item v-for="(task,i) of tasks" :key="i" :task="task" :tasks="tasks" :i="i"></todo-item>
+
+                       </ul>`,
+          props:["tasks"],//接受父组件传来的值
+          components:{
+              todoItem
+          }
+      };
+  </script>
+  <script >
+      var todoAdd = {
+          template:`
+  <div>
+    <input v-model="task"><button @click="push">+</button>
+  </div>`,
+          props:["tasks"],
+          data(){
+            return{task:""}
+          },
+          methods:{
+            push(){
+                this.tasks.push(this.task);
+                this.task="";
+            }
+          }
+      };
+  </script>
+
+  <script>
+      Vue.component("todo",
+          {template:`<div>
+    <h1>待办事项列表</h1>
+    <todo-add :tasks="tasks"></todo-add>
+
+    <todo-list :tasks="tasks"></todo-list>
+  </div>`,/*给子组件传值*/
+              data(){
+              return{tasks:["吃饭","睡觉","象拔蚌"]}
+
+              },
+              components:{
+                  todoAdd,todoList
+              }
+          });
+  </script>
+</head>
+<body>
+<div id="app">
+  <todo></todo>
+
+  <!--<todo></todo>-->
+</div>
+<script>
+var vm=new Vue({
+  el:"#app",
+  data:{
+    
+  }
+})
+</script>
+</body>
+</html>

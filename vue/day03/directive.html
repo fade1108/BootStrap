@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/jquery-1.11.3.js"></script>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+
+
+
+<div id="app">
+
+<input v-focus  >
+
+<ul>
+    <li v-for="(item,i) of cart" :key="i">
+        <input type="checkbox" v-model="item.is_checked">
+        {{item.pid}} | {{item.pname}} | ￥{{item.price}} |
+        {{item.count}} | 小计:￥{{item.price*item.count}} |
+        <button @click="del" :data-i="i">X</button>
+
+    </li>
+<h1>总计 : ￥{{total.toFixed(2)}}</h1>
+
+</ul>
+
+
+</div>
+<script>
+    /*
+    * 定义自定义指令
+
+ Vue.directive('指令名', {
+		inserted( el ){ //当元素被加载到DOM树时触发
+....  el 为当前一个写有v-指令的DOM元素对象
+函数中，执行原生的DOM API
+}
+	  })
+    *
+    *
+    *  使用自定义指令
+    * */
+    Vue.directive("focus",{
+        inserted(abc){
+            abc.focus();
+        }
+    })
+
+
+</script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            cart:[
+                {pid:1,pname:"华为",price:5000,count:2,is_checked:false},
+                {pid:2,pname:"小米",price:3000,count:2,is_checked:false},
+                {pid:3,pname:"苹果",price:8000,count:2,is_checked:false},
+            ]
+        },
+        methods:{
+            del(e){
+                if(e.target.nodeName="BUTTON"){
+                    //怎么知道第几个li
+                    var i = parseInt(
+                        e.target.dataset.i
+                    );
+                    //splice(开始删除，删除的个数) arry.splice 删除数组中的元素
+                    this.cart.splice(i,1)
+                }
+            }
+
+        },
+        watch:{},
+        computed:{
+            total() {
+
+               /* var total=0;
+                for(var item of this.cart){
+                    if(item.is_checked){
+                    total+=item.price*item.count
+                    }
+                }
+                return total;
+*/
+
+                return this.cart.filter(item=>item.is_checked)
+                    .reduce(
+                    (prev, item) => prev + item.price * item.count
+                    , 0
+                );
+
+
+            }
+
+
+        }
+
+
+    })
+</script>
+</body>
+</html>
