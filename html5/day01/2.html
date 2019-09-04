@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        
+        
+        body{
+            text-align: center;
+        }
+        canvas{
+            background-color: #aaaaaa;}
+    </style>
+    
+    
+    
+</head>
+<body>
+<canvas onclick="abc()" id="c3"  width="500" height="400"></canvas>
+
+
+
+<script>
+    var c3 = document.getElementById("c3");
+    //通过画布获取 画笔
+    var ctx = c3.getContext("2d");
+    ctx.strokeRect(0,0,100,80);//xywh
+    ctx.fillStyle = "#f00";
+    ctx.fillRect(100,100,50,50);
+    ctx.fillStyle = "#00f";
+    ctx.fillRect(400,0,100,80)
+    ctx.clearRect(0,0,500,400)
+    ctx.fillStyle="#fcc"
+    ctx.fillRect(0,0,100,80)
+    ctx.fillStyle="#0ffff0"
+    ctx.fillRect(400,0,100,80)
+    ctx.fillStyle="#f00"
+ ctx.fillRect(0,320,100,80)
+    ctx.fillStyle="#fcc"
+  ctx.fillRect(400,320,100,80);
+
+    var ab = 1;
+    var x = 0;
+    var time = setInterval(
+        ()=>{
+            //先清 再回执
+            ctx.clearRect(0,0,500,400);
+            x+=5*ab;
+            ctx.fillRect(x,0,100,80)
+            if(x>400){
+                ab = -1;
+            }else if(x<0){
+                ab =1;
+            }
+        },20
+    )
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

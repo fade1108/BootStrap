@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/html/222/bootstrap.css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/html/8-8/5.css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/html/8-9/1.css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/html/8-9/5.css" charset="GBK" />
@@ -9,6 +10,7 @@
     <file url="file://$PROJECT_DIR$/html/day02/bootstrap.css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/html/day03/bootstrap.css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/html/day04/bootstrap.css" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/html/login/bootstrap.css" charset="GBK" />
     <file url="file://$PROJECT_DIR$/vue/css/bootstrap.css" charset="GBK" />
   </component>
 </project>

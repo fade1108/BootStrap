@@ -6,11 +6,89 @@
     <script src="../js/jquery-1.11.3.js"></script>
     <script src="../js/vue.js"></script>
     <script src="../js/vue-router.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css">
+
+
+    <script>
+        Vue.component("my-header",{
+            template:`
+            <header>
+            <h1>头部</h1>
+            <ul>
+            <li><router-link to="/">首页</router-link></li>
+            <li><router-link to="/login">登录</router-link></li>
+            </ul>
+            </header>`
+        })
+
+
+    </script>
+    <script>
+        var index={
+            template:`
+
+            <main>
+            <my-header></my-header>
+            <h2>这里是首页</h2>
+            <h3>欢迎光临我的第一个spa应用</h3>
+            <ul>
+            <li><router-link to="/details/1">查看1号商品</router-link></li>
+            <li><router-link to="/details/2">查看2号商品</router-link></li>
+            <li><router-link to="/details/3">查看3号商品</router-link></li>
+            <li><router-link to="/details/4">查看4号商品</router-link></li>
+</ul>
+
+</main>`
+        }
+    </script>
+    <script>
+        var details={
+            template:`
+            <main>
+            <my-header></my-header>
+            <h2>这里是商品详情页</h2>
+            <h3>查询 {{lid}}号 商品的详情信息</h3>
+</main>`,
+            props:["lid"]
+        }
+    </script>
+    <script>
+        var login={
+            template:`<mian>
+            用户名:<input v-model="uname"><br>
+            密码:<input type="password" v-model="upwd"><br>
+            <input type="button" value="登录" @click="login">
+
+</mian>`,
+            data(){
+                return{
+                    uname:"dingding",
+                    upwd:"123456"
+                }
+            },
+            methods:{
+                login(){
+                    if(this.uname=="dingding"&&this.upwd=="123456"){
+                        alert("登陆成功，3S后自动返回首页");
+                        setTimeout(()=>{
+                            //利用路由器 程勋进行跳转
+                            this.$router.push("/")
+                        },3000);
+                    }else {
+                        alert("用户名或密码错误")
+                    }
+                    this.uname="";
+                    this.upwd="";
+                }
+            }
+        }
+    </script>
+    <script src="router.js"></script>
 </head>
 <body>
 <div id="app">
 <router-view>
-    
+
 </router-view>
 
 </div>
@@ -20,7 +98,7 @@
     var vm = new Vue({
         el: "#app",
         data: {},
-        methods: {}
+        router
 
 
     })
