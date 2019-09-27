@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*父元素*/
+        .container{
+            position: relative;
+            width: 856px;
+            height: 480px;
+        }
+        #v3{/*视频元素*/
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        /*画布元素*/
+        #c3{
+            position: absolute;
+            width: 90%;
+            height: 90%;
+            z-index: 1;
+        }
+    </style>
+
+</head>
+<body>
+<h4>弹幕</h4>
+<!--视频与画布-->
+<div class="container">
+    <!--画布-->
+    <canvas id="c3" width="856" height="450">
+
+    </canvas>
+    <!--视频-->
+    <video src="./res/langqin.mp4" controls id="v3">
+
+    </video>
+</div>
+<!--用户输入区域-->
+
+<div class="userDiv">
+<!--输入框用于输入用户文字-->
+<input type="text" placeholder="说点什么吗" id="inputMsg">
+<!--下拉列表用于用户文字大小-->
+    <select id="inputFont">
+        <option value="12px">
+            请选择
+        </option>
+        <option value="22px">
+            中号
+        </option>
+        <option value="32px">
+            大号
+        </option>
+    </select>
+<!--下拉列表用于用户输入文字颜色-->
+    <select id="inputColor">
+        <option value="#000">
+            请选择
+        </option>
+        <option value="#f00">
+            红色
+        </option>
+        <option value="#00f">
+            蓝色
+        </option>
+
+    </select>
+<!--发送按钮-->
+    <input type="button" value="发送" id="inputBtn" />
+</div>
+
+
+
+<!--  2.2:html5新特性-- -变形 (弹幕)-index.html
+    (1)视频元素：video     #底层 z-index:0
+    (2)画布元素:  canvas   #上层  z-index:1
+    (3)创建输入区域 
+      [输入文字区域;文字大小下拉列表;文字颜色下拉列表;发送按钮]
+    (4)加载main.js 文件(主管)
+    (5)加载msg.js  文件(一家餐厅)
+ 
+   2.3:html5新特性-- -弹幕需要数据--msg
+     (1)每一个弹幕中文字需要位置(x,y)
+     (2)每一个弹幕中文字(m)
+     (3)每一个弹幕中文字颜色(color)
+     (4)每一个弹幕中文字大小(font)
+     (5)每一个弹幕中文字速度(spd)
+     (6)每一个弹幕中文字(状态 alive true 显示 false 隐藏)
+     (7)100个弹幕
+ 
+   2.4:html5新特性-- -程序调用流程
+    -msg.js 所有与弹幕相关数据函数
+    #节省内存(原型)
+     (1)创建弹幕构造函数   var msgObj = function(){}
+       x,y,m,color,font,spd..
+     (2)创建弹幕实始化函数 msgObj.prototype.init = function(){}
+       给x,y,m,color,font,spd 赋初始值(开始之前值)
+     (3)创建弹幕绘制函数   msgObj.prototype.draw = function(){}
+       依据上面x,y,..把弹幕绘制画布上
+    -main.js 负责创建弹幕对象并且调用相关函数
+      function game(){
+         init();
+         gameloop();
+       }
+      function init(){
+        负责创建弹幕对象并且调用init方法
+        msg = new msgObj();
+        msg.init();
+       }
+      function gameloop(){
+        创建定时器调用gameloop
+        msg.draw();
+      }
+      document.body.onload = game;
+    -index.html-->
+<script>
+
+
+</script>
+<script src="js/main.js">主管</script>
+<script src="js/msg.js">弹幕</script>
+</body>
+</html>

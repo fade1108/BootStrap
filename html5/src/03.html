@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../day04/client/jquery-1.11.3.js"></script>
+    <script src="../day04/client/socket.io.js"></script>
+    <link rel="stylesheet" href="../day04/client/bootstrap.css">
+</head>
+<body>
+<h4>多对多聊天室 03 -chart</h4>
+<input type="text" id="inputMsg">
+<button id="inputBtn">发送</button>
+<div id="msg">
+
+</div>
+
+
+
+
+<script>
+    //1.连接聊天室
+    //2.创建div
+    //将服务器广播消息保存div中间
+    //文字颜色设置红色
+    //将div追加msg最后一个元素
+    //
+
+    //
+    //
+    //
+
+    var clientScoket = io("ws://127.0.0.1:3000");
+    clientScoket.on("enter",(data)=>{
+        $("#msg").append('<div id="d1"></div>');
+        $("#d1").html(data);
+        $("#d1").css({color:"#f00"});
+        //功能而 发送一份信息给服务器
+        console.log($("#inputMsg").value);
+        $("#inputBtn").on("click",function () {
+            clientScoket.emit("message",$("#inputMsg").val());
+        });
+
+    });
+
+        //功能三 接收其他用户发送消息
+        clientScoket.on("list",(data)=>{
+            var div = document.createElement("div")
+            /*div.innerHTML=data;*/
+            $("div").html(data);
+            //4.1接收客户信息 div颜色蓝色追加msg
+           /* $("div").css({color:"#0ff"});*/
+           div.style.color="#032";
+            $("#msg").append(div)
+        });
+        //功能四：服务器广播指定用户离开
+        clientScoket.on("leave",(data)=>{
+            var div = document.createElement("div")
+            div.innerHTML = data;
+            div.style.color="#f0f";
+            var msg = document.getElementById("msg")
+            msg.appendChild(div)
+        })
+
+
+    
+
+
+</script>
+</body>
+</html>

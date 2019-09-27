@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{text-align: center}
+        svg{background: #ffffff}
+
+    </style>
+</head>
+<body>
+<svg id="s3" width="500" height="400">
+<circle r="50" cx="250" cy="200" id="c3"
+   stroke="#f00" stroke-opacity="0.3"     fill="#0ff" fill-opacity="0.5">
+
+</circle>
+</svg>
+
+<svg id = "s4" width="1000" height="1000">
+
+
+
+
+</svg>
+
+<script>
+    var s3 = document.getElementById("s3");
+    var c = document.createElementNS(
+        "http://www.w3.org/2000/svg",//指定元素标准
+        "circle"
+
+    );
+    //为元素添加属性 并且获取属性 只能用和兴dom方法
+    c.setAttribute("r",50);
+    c.setAttribute("cx",100);
+    c.setAttribute("cy",200);
+    c.setAttribute("fill","#fc0");
+    s3.appendChild(c);//将圆添加到画布中 ， ，appendchile  添加个儿子
+
+   /* var x = c.getAttribute("cx");
+    var y  = c.getAttribute("cy");
+        var r = c.getAttribute("r")
+*/
+
+    c.onclick = function () {
+        var r = c.getAttribute("r");
+        r *= 1.05;
+        c.setAttribute("r",r);
+    }
+    //练习 ，动态的创建  30 个 大小不同  颜色不同 ，透明度不同 位置不同的圆形
+    //当用户点击某个元时。慢慢变大变淡直到消失  删除圆
+
+    var s4 = document.getElementById("s4");
+
+    function rc() {
+        var r=Math.floor(Math.random()*256)
+        var g=Math.floor(Math.random()*256)
+        var b=Math.floor(Math.random()*256)
+        return `rgb(${r},${g},${b})`
+    }
+    for(var i=0;  i<30;i++){
+        var  fade = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "circle"
+        );
+       fade.setAttribute("cx",Math.random()*400)
+       fade.setAttribute("cy",Math.random()*500)
+       fade.setAttribute("r",5+Math.random()*20)
+        fade.setAttribute("fill",rc());
+      fade.setAttribute("fill-opacity",Math.random())
+        s4.appendChild(fade);
+        //为圆型绑定事件  创建定时器 获取半径对其增加
+
+        fade.onclick = function () {
+            //解决元素只能点击一次
+            this.onclick = null;
+            var t = setInterval(()=>{
+                var r = this.getAttribute("r");
+                var p = this.getAttribute("fill-opacity")
+                p *= 0.9;
+                r*=1.05;
+                this.setAttribute("r",r)
+                this.setAttribute("fill-opacity",p)
+                if(p<0.1){
+                    clearInterval(t);
+                    s4.removeChild(this);//删除当前元素
+                }
+
+            },20)
+        }
+
+
+    }
+
+
+
+
+    /*for(var i=0;i<=30;i++){
+        if(i<30){
+            var r1 = Math.random()*100
+            fade.getAttribute("r",r1);
+            console.log(fade)
+            fade.getAttribute("cx",Math.random()*100)
+            fade.getAttribute("cy",Math.random()*100)
+            fade.getAttribute("fill","#eff")
+            s4.appendChild(fade)
+            fade.setAttribute("r" ,r1);
+
+        }
+
+    }
+*/
+
+
+
+
+    //htmldom var name = id.
+</script>
+</body>
+</html>

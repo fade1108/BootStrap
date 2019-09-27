@@ -15,9 +15,15 @@
 	</form>
  <script src="js/jquery-1.11.3.js"></script>
  <script>
-     $(":checkbox").click(function(){$(":input:not(:checkbox)")
-         .prop("disabled",!$(this).prop("checked"))})
-         //                                                                                        真
+   /*  $(":checkbox").click(function(){$(":input:not(:checkbox)")
+         .prop("disabled",!$(this).prop("checked"))})*/
+         //
+   //
+   $(":checkbox").click(function () {
+       $(":input:not(:checkbox)").prop("disabled",!$(this).prop("checked"))
+       //选择到其他三个  .prop("状态属性",bool)
+   });                                                                                      真
+
  </script>
  </body>
 </html>

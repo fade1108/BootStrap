@@ -5,6 +5,50 @@
     <title>Title</title>
 </head>
 <body>
+<h3>统计图</h3>
+<!--canvas画布-->
+<canvas id="c3" width="500" height="400">
 
+</canvas>
+<script>
+    var c3 = document.getElementById("c3");
+    /*画笔*/
+    var ctx = c3.getContext("2d")
+    var list=[{name:"北口",value:1000},
+        {name:"南口",value:1200},
+        {name:"地铁口",value:2000},
+        {name:"交叉口",value:1300}
+    ];
+    var colors =  ['#c23531','#2f4554', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'];
+    for(var key in list){
+        var w = 50;
+        var h = list[key].value/10;
+        var y = 400- h;
+        var x = key * 100+50;
+        var idx = Math.floor(Math.random()*colors.length)
+        ctx.fillStyle = colors[idx];//随机颜色
+        /*ctx.fillStyle= rc()*/
+
+
+        ctx.fillRect(x,y,w,h);
+        //增加透明度
+        ctx.globalAlpha = 0.3
+        //功能2
+        var name = list[key].name;
+        var txtX=x;
+        var txtY=y-20;
+        ctx.fillStyle = "#000";
+        ctx.font = "20px SimHei"
+        ctx.fillText(name,txtX,txtY)
+    }
+
+    function rc() {
+        var r = Math.floor(Math.random()*256);
+        var g = Math.floor(Math.random()*256);
+        var b = Math.floor(Math.random()*256);
+        return `rgb(${r},${g},${b})`
+    }
+
+</script>
 </body>
 </html>

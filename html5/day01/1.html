@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <h4>视频与图片专用样式 object-fit</h4>
+    <h5>默认值fill 拉伸</h5>
+    <div class="box">
+        <img src="./res/mm.png">
+    </div>
+    <h5>默认值contain 包含</h5>
+    <div class="box">
+        <img src="./res/mm.png" style="object-fit: contain">
+    </div>
+    <h5>默认值cover 覆盖</h5>
+    <div class="box">
+        <img src="./res/mm.png" style="object-fit: cover">
+    </div>
+    <canvas id="c3"  width="500" height="400"></canvas>
+
+
+
+<script>
+   var c3 = document.getElementById("c3");
+    //通过画布获取 画笔
+    var ctx = c3.getContext("2d")
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<style>
+    .box{
+        width: 300px;
+        height: 300px;
+        margin: 10px 0 20px;
+        background: #000;
+        overflow: hidden;/*溢出隐藏*/
+        resize: both;
+        border: 1px solid red;
+
+    }
+    .box img{
+        width:100%;
+        height:100%;
+        background: #cd0000;
+    }
+</style>
+</body>
+</html>

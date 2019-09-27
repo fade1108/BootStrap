@@ -34,6 +34,7 @@ $("body>div :contains(提交)").css("background-color","red")
 $(".alert:has(.close)").css("background-color","pink")
   // A:has B  含有B:的A
   //选中不包含.close按钮的.alert元素，让它们变为绿色的警告框
+  $(".alert:not(:has(.close))").css("background-color","red")
 
 </script>
 </body>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            text-align: center ;
+            background-color: #e1edf7;}
+    </style>
+</head>
+<body>
+<svg id="s3" width="500" height="400">
+    <line x1="200" y1="200" x2="250"
+        stroke-linecap="round"  y2="200" stroke="red" stroke-width="5">
+
+    </line>
+    <polyline points="50,50 270,560 600,660" ></polyline>
+
+    <defs>
+        <!--模糊滤镜-->
+        <filter id="f3">
+            <feGaussianBlur stdDeviation="3">
+
+            </feGaussianBlur>
+
+        </filter>
+
+    </defs>
+    <text font-size="30" x="30" y="30">
+        豪华版野猪
+    </text>
+    <text font-size="30" x="40" y="30" filter="url(#f3)">
+        乞丐版象拔蚌
+    </text>
+
+</svg>
+<svg  height="900" width="800">
+    <polygon points="100,10 40,180 190,60 10,60 160,180"
+             style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;" >
+
+    </polygon>
+    <defs>
+        <linearGradient id ="g3" x1="0" y1="0" x2="100%" y2="0">
+            <stop offset="0%" style="stop-color:rgb(255,255,0);
+stop-opacity:1">
+
+            </stop>
+            <stop offset="25%" style="stop-color:rgb(79,82,255);
+stop-opacity:0.5">
+            </stop>
+
+            <stop offset="50%" style="stop-color:rgb(255,255,0);
+stop-opacity:0.5">
+ </stop>
+            <stop offset="75%" style="stop-color:rgb(26,72,0);
+stop-opacity:0.5">
+            </stop>
+
+
+            <stop offset="100%" style="stop-color:rgb(255,0,0);
+stop-opacity:1">
+
+            </stop>
+        </linearGradient>
+    </defs>
+
+    <ellipse  cx="300" cy="390" rx="85" ry="55"
+             style="fill:url(#g3)">
+    </ellipse>
+    <!--高斯模糊-->
+    <!--<defs>
+        <filter id="assia">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+        </filter>
+    </defs>
+
+    <ellipse cx="0" cy="0" rx="500" ry="408"
+             style="fill:#ff0000;stroke:#000000;stroke-width:2;filter:url(#assia)">
+    </ellipse>-->
+
+</svg>
+
+
+
+<!--渐变对象-->
+<script>
+    var r =Math.floor(Math.random()*256)
+    var g = Math.floor(Math.random()*256)
+    var b = Math.floor(Math.random()*256)
+    var ellips = document.getElementsByTagName("ellipse")
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>获取数据</h1>
+<script>
+    var size = sessionStorage.length;
+    console.log("数据个数"+size);
+
+    size=localStorage.length;
+    console.log("数据个数"+size);
+    //获取数据内容
+    var val = sessionStorage.getItem("fa1")
+    console.log(val)
+    sessionStorage.removeItem("fa1")
+
+</script>
+
+</body>
+</html>

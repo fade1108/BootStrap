@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas{
+            background-color: #ddd;}
+    </style>
+</head>
+<body>
+<canvas id="c3" width="500" height="400">
+
+</canvas>
+<script>
+    var c3 = document.getElementById("c3");
+    var ctx = c3.getContext("2d");
+    //将图片绘制到画布左上角
+    //创建图片对象
+    var p3 = new Image();
+    //下载图片
+    p3.src = "res/p3.png";
+    //绑定事件下载成功
+    p3.onload= function () {
+        var deg1 = 0;
+        var deg2 = 0;
+        setInterval(()=>{
+            //绘制小飞机1 保存 画 恢复
+            ctx.save();//保存画笔状态
+            deg1+=15;//第一架小飞机手工累加角度
+            ctx.translate(100,200)//原点
+            ctx.rotate(deg1*Math.PI/180);
+            ctx.drawImage(p3,-100,-50);//以自己为中心旋转
+            ctx.restore();//恢复画笔状态
+            //绘制小飞机2 保存 画 恢复
+        },200)
+
+
+
+    };
+  /*  //绘制图片
+    ctx.drawImage(p3,0,0)
+    //绘制图片右上角
+    var w = p3.width;
+    var h = p3.height;
+    ctx.drawImage(p3,500-w,0)
+    //左下角绘制小飞机
+    ctx.drawImage(p3,0,400-20,40,20)
+
+
+    var a =40
+    var b = 20
+    var t = setInterval(()=>{//创建定时器
+        ctx.clearRect(0,0,500,400)
+
+            b += 2;
+            a += 2;
+            ctx.drawImage(p3,0,400-b,a,b)
+        if(w1>2000){
+                clearInterval(t)
+        }},100)
+*/
+</script>
+
+</body>
+</html>

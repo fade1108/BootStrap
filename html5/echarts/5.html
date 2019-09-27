@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //创建新线程执行05.js
+   var w = new Worker("js/05.js");
+   //向Worker发送数据
+    w.postMessage("123");
+    //收数据
+    w.onmessage=function (event) {
+
+        console.log( event.data)
+    }
+</script>
+
+</body>
+</html>

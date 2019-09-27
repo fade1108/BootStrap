@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    /*function getCount() {
+        return new Promise(
+            //Promise 中开门 resolve  翻译：已解决
+            function (resolve,reject) {
+                axios.get(
+                    "http://localhost:5050",
+                    {params:{type}}
+                ).then(res=>{
+                    resolve(res.data.count);
+                    //开门后里面的参数 交给调用者.then(function(参数))
+                });
+            }
+            
+        )
+    }
+    /!*三个请求串行
+    getCount("a").then(
+            function (count) {
+                total+=count;
+                return getCount("b")
+                //其实是 return new Promise()
+
+
+            }
+        ).then(
+            function (count) {
+                total+=count;
+                return getCount("c")
+            }
+    ).then(function (count) {
+        total+=count;
+        console.log(total);
+    })
+    ;
+    *!/
+    /!*三个请求并行，等所有请求都执行完，才汇总*!/
+    Promise.all([
+        getCount("a"),//return 出getCount("a")的new Promise()对象
+        getCount("b"),
+        getCount("c")
+    ]).then(result=>{//会在所有newPromise()都执行完之后才执行
+        result.reduce((prev,elem)=>prev+elem);
+
+    })
+    //用es7来实现这段程序
+    //用一个匿名函数自调用，将整个代码括起来   async是异步的意思
+            //await 代替的是then
+    (async function () {
+        var count = await getCount("a");
+        //await 其实等的是 getCount("a")的new Promise()完成的
+        total+=count;
+        count =await getCount("b");
+        total+=count;
+        count  =await getCount("c");
+        total+=count;
+        console.log(total);
+    })();
+    //用es7解决并行
+    Promise.all([
+        getCount("a"),//return 出getCount("a")的new Promise()对象
+        getCount("b"),
+        getCount("c")
+    ]);//40:06
+
+    (async function () {
+        var result = await Promise.all([getCount("a"),
+        getCount("b"),getCount("c")]);
+        total=result.reduce((prev,elem)=>prev+elem);
+        console.log(total)
+    })()
+*/
+/*
+
+    function test(resolve,reject) {
+        var time = Math.random()*2;
+        setTimeout(function () {
+            if(time<1){
+                resolve("OK")
+            }else {
+                reject("错误"+time);
+            }
+        },time*1000)
+    }
+    var a=3;
+    var p1 = new Promise(test); 
+    var p2 = p1.then(function (a) {
+        console.log("结果是"+a);
+    })
+
+*/
+function ran(type) {
+    return new Promise(
+        function (resolve,reject) {
+
+        }
+    )
+    
+}
+
+
+function liang() {
+    var a = Math.random()*10;
+    return new Promise(
+        function (resolve,reject) {
+            if(a>5){
+        console.log("我透");
+            resolve(a);
+            }else {
+                console.log("a小于5了  我日他妈")
+                reject();
+            }
+    })
+}
+
+
+
+    function ji() {
+        return new Promise(
+            function (door) {
+                setTimeout(function () {
+                    console.log("真牛逼2");
+                    door()
+                })
+            }
+        )
+    }
+    function ba() {
+        return new Promise(
+            function (door) {
+                setTimeout(function () {
+                    console.log("真牛逼3");
+                    door()
+                })
+            }
+        )
+    }
+/*liang().then(ji).then(ba).then(function () {
+    console.log("我草你妈")
+})*/
+liang().then(
+    function res(a) {
+        a+=10;
+        console.log("我偷你的吗"+a)
+    }
+
+)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

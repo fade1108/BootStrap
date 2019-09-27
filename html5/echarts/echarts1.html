@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+<!--准备个容器-->
+<div id="main" style="width: 1000px;height:800px"></div>
+<div id = "main4" style="width: 1000px;height: 800px;border: 1px solid #3E3A39">
+    <div id = "main5" style="width: 1000px;height: 800px;border: 1px solid #3E3A39"></div>
+
+</div>
+
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+         title:{
+             text:"一个柱状图"
+         },
+            tooltip:{},
+            legend:{
+             data:['销量']
+            },
+            xAxis:{
+             data:["衬衫","羊毛衫","雪纺衫","裤子","袜子"]
+            },
+            yAxis:{
+
+            },
+            series:[
+                {type:"bar",data:[10,20,50,60,40]
+
+                },
+                {type:"line",data:[10,20,50,60,40]}
+            ]
+
+
+        }
+        </script>
+
+        <!--// 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        //获取容器main3
+        //创建新echarts对象mycharts3
+        //创建新配置对象 options3
+        //将options3添加到 mycharts3-->
+        <div id="main3" style="width: 800px;height: 800px;">
+            </div>
+<script>
+        list=[{name:"北京",value:19000},
+            {name:"上海",value:23000},
+            {name:"杭州",value:17600},
+            {name:"广州",value:29000},]
+        var xlist = [];
+        var datalist = [];
+        for (var item of list){
+            xlist.push(item.name);
+            datalist.push(item.value)
+        }
+        console.log(xlist,datalist)
+        var main3 =document.getElementById("main3")
+        var mycharts3 = echarts.init(main3)
+        var options3 = {
+            color:'#d48265',
+            textstyle:'auto',
+            title:{text:"分公司销售统计图"},
+            xAxis:{data:xlist},
+            yAxis:{},
+            series:[{type:"bar",data:datalist}]
+
+        };
+        mycharts3.setOption(options3);
+
+        var main5 = document.getElementById("main5");
+        var mycharts5 = echarts.init(main5);
+        var options5 = {
+            /*tooltip : {
+                formatter: "{a} <br/>{b} : {c}%"
+            },*/
+            toolbox:{
+                feature:{
+                    restore:{},
+                    saveAsImage:{}
+                }
+            },
+            series:[
+                {
+                    name:"象拔蚌的个数",
+                    type:'gauge',
+                    detail:{formatter:'{value}%'},
+                    data:[{value:50,name:'象拔蚌的能量'}]
+                }
+            ]
+
+
+        };
+        setInterval(function () {
+            options5.series[0].data[0].value = (Math.random() * 100).toFixed(2)-0;
+            myChart.setOption(options5, true);
+        },2000);
+
+
+
+
+    var main4 =document.getElementById("main4");
+        var mycharts4 = echarts.init(main4);
+        var options4={
+            tooltip: {
+                trigger: 'item',
+                formatter: "{a} <br/>{b}: {c} ({d}%)"
+            },
+            legend: {
+                orient: 'vertical',
+                x: 'left',
+                data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+            },
+            backgroundColor:'#2c343c',
+            series:[
+                {
+                    type:'pie',
+                    center:['55%','55%'],
+                    radius: '55%',
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center'
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                fontSize: '30',
+                                fontWeight: 'bold'
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false
+                        }
+                    },
+
+                    data:[
+                        {value:355,name:'js'},
+                        {value:310,name:'css'},
+                        {value:274,name:'html'},
+                        {value:235,name:'java'},
+                        {value:400,name:'linux'},
+
+                    ]
+                }
+            ]
+        }
+        mycharts4.setOption(options4)
+
+
+
+
+    </script>
+
+
+
+
+
+
+</body>
+</html>

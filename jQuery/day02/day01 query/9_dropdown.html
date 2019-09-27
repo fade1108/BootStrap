@@ -55,11 +55,22 @@
   </div>
 	<script src="js/jquery-1.11.3.js"></script>
 	<script>
-		$("[data-trigger=dropdown]").click(function () {
-        $(this).next().show();
-    }).blur(function () {
-            $(this).next().hide()
-        })
+      //创建自定义扩展属性 data-trigger="dropdown"
+      $("[data-trigger=dropdown]").click(function () {
+          //查找要修改的元素
+          $(this).next().show();
+          //4.修改元素
+          //dom方式
+          //$ul.style.display="block"
+          //jquery
+          //$ul.css("display","block")
+
+          //jquery为了方便会返回原值 所以可以连着点击
+      }).blur(function () {
+          //hide()隐藏
+          $(this).next().hide();
+      })
+
 
 
 
