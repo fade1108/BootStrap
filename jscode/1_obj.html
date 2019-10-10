@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var eid = 1001;
+    function intrSelf() {
+        console.log(`我的编号是${this.eid}`)
+    }
+    var friends=["亮亮","然然","东东"];
+    var eric={
+        eid,
+        ename:"象拔蚌",
+        intrSelf,
+        friends,
+        run(){
+            console.log(`${this.ename}在奔跑`)
+        }
+    }
+    console.log(eric);
+    eric.run()
+    eric.intrSelf()
+
+//创建一个构造函数
+    class Student{
+        //所有构造函数名提升为class名，所有构造函数更名为constructor
+    constructor(sname,sage) {
+        this.sname=sname
+        this.sage=sage
+        
+    }
+    //向构造函数的原型对象里增加studentSelf方法
+    studentSelf (){
+        console.log(`我是${this.sname}我的年龄是${this.sage}`)
+    }
+    run(){
+        console.log(`${this.sname}`)
+        }
+    /*Student.prototype.run=function () {
+        console.log(`${this.sname}`)
+    }*/
+
+    }
+    var lilei = new Student("象拔蚌1号",11);
+    var lalala = new Student("象拔蚌2号",12);
+    //今后只要创建一种自定义类型时 都用class
+    //如何使用class 用class{}包裹构造函数和原型对象方法
+    //2.构造函数名提升为class名，所有构造函数 从此统一更名为constructor
+    //所有放在class中的函数，不需要加类型名.prototype前缀
+    console.log(lilei)
+    console.log(lalala);
+
+</script>
+</body>
+</html>
