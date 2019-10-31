@@ -24,9 +24,11 @@
   //点击小图片，下方my-big中显示大图片
   var $img = $(".my-small");
   $img.click(function () {
-
-
-      $(".my-big").attr({src:$(this).attr("abc")})
+      $(".my-big").attr(
+          {
+          src:$(this).attr("abc")
+      }
+      )
   });
 
 </script>

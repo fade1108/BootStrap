@@ -9,7 +9,6 @@
 	<form action="">
 		用户名:<input name="uname">
 					<span id="uname-msg">
-
 					</span><br>
 		密码:<input type="password" name="upwd">
 					<span id="upwd-msg"></span><br>
@@ -19,11 +18,8 @@
 	<script>
     //正确时，使用图片:"<img src='img/ok.png'>"
 		$(":text").blur(function () {
-
-				vali($(this),3,9,"用户名3" +
-						"到9位","恭喜输入正确");
-
-    });
+			vali($(this),3,9,"用户名3" + "到9位","恭喜输入正确");
+		});
 		//用户名
 		$(":password").blur(function () {
 				vali($(this),3,6,"密码3-6位","恭喜输入正确");
