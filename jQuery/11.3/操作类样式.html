@@ -12,6 +12,34 @@
         .cls2{
             width: 200px; height: 200px;background-color: #1e7e34
         }
+        .div1{
+            width:200px;
+            height: 200px;
+            background-color: #00aaaa;
+        }
+        .div2{
+            width: 300px;
+            height: 22px;
+        }
+        .span1{
+            display: inline-block;
+
+        }
+        .span2{
+            display: inline-block;
+            white-space: normal;
+            width: 60px;
+
+        }
+        .div2-div1{
+            float: left;
+        }
+        .div2-div2{
+            height: 20px;
+            float: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 
 </head>
@@ -26,12 +54,62 @@
     <li>头你妈</li>
     <li>草拟吗</li>
 </div>
+<button id="btn2">给我点</button>
+<div class="div1"></div>
 
+<ul id="uu">
+    <li>第一个</li>
+    <li>第2个</li>
+    <li>第3个</li>
+    <li>第4个</li>
+    <li>第5个</li>
+    <li>第6个</li>
+    <li>第8个</li>
+</ul>
+<div class="div2">
+    <div class="div2-div1"><span class="span1">产品介绍产品介绍产品介绍123123</span></div>
+    <div class="div2-div2"><span class="span2">这是一个相1233333333</span></div>
+
+</div>
+<input type="button" value="显示效果哈哈" id="btn3">
+
+
+<script src="../js/jquery-1.11.3.js"></script>
 <script>
 $(function () {
         $("#btn").click(function () {
             $("#div").addClass("cls")
         })
+    $("#btn2").click(function () {
+        $(".div1").html("<p>这是一个p标签</p>").css("backgroundColor","yellow");
+    })
+    //获取列表中每个li 当鼠标进入后 ，当前的Li有高亮显示，点击的时候可以让当前被
+    //点击的Li字体变大，字体颜色改变，改变字体
+    $("#uu>li").mouseover(function () {
+        $(this).css("backgroundColor","red").siblings("li").css("backgroundColor","").click(function () {
+            $(this).css("fontSize","50px").css("color","green")
+        })
+    })
+    var span1length = $(".span1").width()
+    console.log(span1length)
+    var span2length = 290-span1length
+    if(span1length>200){
+            $(".span2").css("width",span2length+"px")
+    }else {
+        $(".span2").css("width","63px")
+    }
+    $("#btn3").click(function () {
+        $(this).val("改变了")
+    }).mouseover(function () {
+        $(this).css({"width":"200px","height":"100px"})
+    }).mouseout(function () {
+        $(this).css("backgroundColor","red")
+    })
+
+
+
+
+
 })
 </script>
 
