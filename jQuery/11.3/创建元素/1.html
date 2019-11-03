@@ -3,13 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        div{
+            width: 200px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
     <script src="../../js/jquery-1.11.3.js"></script>
 </head>
 <body>
 
 
-
+<input type="button" value="创建元素" id="btn">
+<div id="div1"></div>
 <script>
+/*
+* dom中创建元素
+* 1.document.wirte("标签代码")  缺陷：页面 加载后创建元素，把页面中原有的内容全部干掉
+*
+* 2.innerHTML
+* 3.doucment.createElement("标签的名字")
+*
+*
+* jq中创建
+* $("标签的代码")
+* 对象.html("标签的代码")
+* */
+$(function () {
+    $("#btn").click(function () {
+        //创建元素 ，
+        var aobj =  $("<a href='http://www.baidu.com'>百度</a>")
+        //把元素添加到div中
+        $("#div1").append(aobj)
+    })
+})
 
 </script>
 </body>
