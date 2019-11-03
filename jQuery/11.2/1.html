@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 300px;
+            height: 200px;
+            background-color: pink;
+        }
+        .cls{
+            background-color: pink;
+        }
+        .cls2{
+            background-color: #1e7e34;
+        }
+    </style>
+    <script src="../js/jquery-1.11.3.js"></script>
+</head>
+<body>
+<input type="button" value="显示效果" id="btn">
+<div id="div1"></div>
+<input type="button" value="设置内容" id="btn2">
+<p>我们都是象拔蚌1号</p>
+<p>我们都是象拔蚌2号</p>
+<p>我们都是象拔蚌3号</p>
+<p>我们都是象拔蚌4号</p>
+<p>我们都是象拔蚌5号</p>
+<p>我们都是象拔蚌6号</p>
+<button id="btn3">按钮 显示效果</button>
+<span class="cls">这是一个span</span>
+<p class="cls">这是一个p</p>
+<button id="btn4">这是个按钮 设置样式</button>
+<ul>
+    <li class="cls2">西游记</li>
+    <li>红楼梦</li>
+    <li>象拔蚌2号</li>
+    <li>象拔蚌3号</li>
+    <li class="cls2">象拔蚌4号</li>
+    <li>象拔蚌5号</li>
+</ul>
+<button id="btn5">显示效果</button>
+<span class="btn5-span">这是一个span标签</span>
+<p class="btn5-p">导师细化那女人</p>
+<ul>
+    <li class="btn5-li">象拔蚌1号</li>
+    <li class="btn5-li">象拔蚌2号</li>
+    <li class="btn5-li">象拔蚌3号</li>
+</ul>
+<div class="btn5-div" style="width: 200px;height: 100px;background-color: blue"></div>
+<button id="btn6">按钮</button>
+<div id="div3">
+    <p>这是div种的第一个p标签</p>
+    <ul>
+        <li>这是第一个li标签</li>
+        <li><p>这是第二个li中的一个p标签</p></li>
+        <li>这是第三个li标签</li>
+    </ul>
+    <p>这是div中的第二个p标签</p>
+</div>
+<p>这是div后的第一个p标签</p>
+<p>这是div后的第二个p标签</p>
+<p>这是div后的第三个p标签</p>
+<input type="text" value="这是文本框" id="txt">
+
+<script>
+    /*document.getElementById("id的值") //根据id获取元素，一个
+    document.getElementsByTagName("标签的名字")
+    document.getElementsByName("name属性的值")
+    doucment.getElementsByClassName("类样式的名子")
+    //
+    jquery获取元素的方式
+    $("#id 的值")
+    $("标签的名字") 多个
+    $(".类样式的名字");  多个*/
+    $(function () {
+        //获取按钮 根据 id原则器
+        $("#btn").click(function () {
+            $("#div1").text("这是一个有颜色的div");//相当于dom中innerText 或者是text content
+            $("#div1").css("backgroundColor","yellow");//设置元素的样式
+        })
+    })
+    //页面的加载事件 //点击按钮 设置多个p标签中显示内容为 我们都是p
+    $(function () {
+        //获取按钮  调用点击时间 获取所有p  设置内容
+        $("#btn2").click(function () {
+            $("p").text("我们都是P");
+        })
+    })
+    //点击按钮 ，设置页面上应用cls样式的元素的背景颜色
+    $(function () {
+        $("#btn3").click(function () {
+            $(".cls").css("backgroundColor","blue");
+        })
+    })
+    //点击按钮设置页面上面  拿到 特定的class的样式 而后改变
+    $(function () {
+        $("#btn4").click(function () {
+            $("li.cls2").css("backgroundColor","yellow")
+        })
+    })
+    //点击按钮 设置页面中的soan标签  Li标签 div标签的背景颜色
+    $(function () {
+        //通过多条件选择器 ，获取元素 统一设置背景颜色
+        $("#btn5").click(function () {
+            $(".btn5-span,.btn5-p,.btn5-li,.btn5-div").css("background","yellow")
+        })
+    })
+
+    //以上都是基本选择器
+
+    //层级选择器
+    $(function () {
+        $("#btn6").click(function () {
+            $("#div3>p").css("backgroundColor","yellow")
+            //点击按钮设置文本框中的值
+            $("#txt").val("哈哈，我又变帅了")
+            console.log($("#txt").val())
+            //小括号中写内容就是设置元素的value属性
+            //小括号中什么也不写 就是获取value属性的值
+            //.css方法， 如果只是设置一个样式的属性和值，就写俩参数，第一个参数是属性
+            //第二个参数是值。。
+            //里面直接可以写键值对的方法
+            $("#div3").css(
+                {
+                    "width":"300px",
+                    "height":"200ox",
+                    "backgroundColor":"red"
+                }
+            )
+        })
+    })
+    //.val()  .css() 方法
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+<script>
+
+</script>
+</body>
+</html>

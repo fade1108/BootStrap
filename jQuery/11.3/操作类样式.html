@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .cls{
+            width: 300px !important;
+            height: 300px !important;
+            background-color: red !important;
+        }
+        .cls2{
+            width: 200px; height: 200px;background-color: #1e7e34
+        }
+    </style>
+
+</head>
+<body>
+<button id="btn" type="button" value="显示效果">
+123
+</button>
+<div id="div" class="cls2">
+    <li>红烧助教</li>
+    <li>清蒸班主任</li>
+    <li>凉拌项目经理</li>
+    <li>头你妈</li>
+    <li>草拟吗</li>
+</div>
+
+<script>
+$(function () {
+        $("#btn").click(function () {
+            $("#div").addClass("cls")
+        })
+})
+</script>
+
+</body>
+</html>
