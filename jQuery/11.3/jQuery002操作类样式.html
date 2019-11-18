@@ -30,6 +30,127 @@
             });
         });
     </script>
+    <script>
+        var logger = JsLogger.serviceDebugLogger;
+
+function main(){
+    var orderId = message.body.order_id;
+    var start = message.body.start;
+    var limit = message.body.limit;
+    var type = message.body.type;
+    var neType = message.body.ne_type;
+    var targetVersion = message.body.target_version;
+    var strategyType = message.body.strategy_type;
+    var response;
+    
+    // 获取所有包信息
+    var allSoftCheckPkg = [];
+    var startNum = 0;
+    var limitNum = 1000;
+    var request = new Message();   
+    request.body = {};
+    request.body.start = startNum;
+    request.body.limit = limitNum;
+    request.body.strategy_type = strategyType;
+    response = CloudServiceAccessor.process('app.service.cs_nc_uupgrade.cs_nc_uupgrade_software_getList', request);
+    allSoftCheckPkg = concatSoftPkg(allSoftCheckPkg, response.body.results);
+    startNum = startNum + limitNum;
+    var total = response.body.total;
+
+    while (startNum < total) {
+    	request.body.start = startNum;
+    	response = CloudServiceAccessor.process('app.service.cs_nc_uupgrade.cs_nc_uupgrade_software_getList', request);
+    	allSoftCheckPkg = concatSoftPkg(allSoftCheckPkg, response.body.results);
+    	startNum = startNum + limitNum;
+    }
+   	
+   	var requestPkg = new Message();   
+    requestPkg.body = {
+    	'start': 0,
+    	'limit': 1000,
+    	'order_id': orderId,
+    };
+    var serviceName = 'app.service.cs_nc_uupgrade.cs_nc_uupgrade_supportnetype_getList';
+    var responsePkg = CloudServiceAccessor.process(serviceName, requestPkg);
+    var devTypeArr = responsePkg.body.results[0].ne_type.split(',');
+    // 遍历所有包信息，根据设备类型，获取支持的包信息
+   	var supportPkgInfo = [];
+    var allSoftLens = allSoftCheckPkg.length;
+    var devTypeLens = devTypeArr.length;
+   	for (var i = 0; i < allSoftLens; i++) {
+   		for (var j = 0; j < devTypeLens; j++) {
+   			if (allSoftCheckPkg[i].ne_type === devTypeArr[j]) {
+   				supportPkgInfo.push(allSoftCheckPkg[i]);
+   				break;
+   			}
+   		}
+   	}
+
+   	// 根据过滤条件过滤包信息
+   	var outputPkgInfo = supportPkgInfo;
+   	var pkgFilterType = [];
+   	var pkgFilterNeType = [];
+   	var pkgFilterNeType = [];
+   	var pkgFilterTargetVersion = [];
+    var outputLens = outputPkgInfo.length;
+
+   	if (isNotBlank(type)) {
+   		for (var k = 0; k < outputLens; k++) {
+            if (-1 !== outputPkgInfo[k].type.toLowerCase().indexOf(type.toLowerCase())) {
+	   			pkgFilterType.push(outputPkgInfo[k]);
+	   		}
+	   	}
+   		outputPkgInfo = pkgFilterType;
+   	}
+
+   	if (isNotBlank(neType)) {
+   		for (var m = 0; m < outputLens; m++) {
+            if (-1 !== outputPkgInfo[m].ne_type.toLowerCase().indexOf(ne_type.toLowerCase())) {
+	   			pkgFilterNeType.push(outputPkgInfo[m]);
+	   		}
+	   	}
+   		outputPkgInfo = [];
+   		outputPkgInfo = pkgFilterNeType;
+   	}
+
+   	if (isNotBlank(targetVersion)) {
+   		for (var n = 0; n < outputLens; n++) {
+            if (-1 !== outputPkgInfo[n].target_version.toLowerCase().indexOf(target_version.toLowerCase())) {
+	   			pkgFilterTargetVersion.push(outputPkgInfo[n]);
+	   		}
+	   	}
+   		outputPkgInfo = [];
+   		outputPkgInfo = pkgFilterTargetVersion;
+   	}
+	
+    response.body.results = outputPkgInfo.slice(start, start + limit);
+   	response.body.total = outputPkgInfo.length;
+    return response;
+}
+
+// 拼接数组
+function concatSoftPkg(allSoftCheckPkg, results) {
+    var resultsLens = results.length;
+	for (var i= 0; i < resultsLens; i++) {
+		allSoftCheckPkg.push(results[i]);
+	}
+	return allSoftCheckPkg;
+}
+
+function isNotBlank(val) {
+    if (undefined === val || null === val) {
+        return false;
+    }
+    var str = val.toString();
+    var undefinedStr = 'undefined';
+    var nullStr = 'null';
+    var blankStr = '';
+    if (undefinedStr === str || nullStr  === str || blankStr === str) {
+        return false;
+    }
+    return true;
+}
+    </script>
 </head>
 <body>
 <input type="button" value="添加类样式" id="btn1"/>
