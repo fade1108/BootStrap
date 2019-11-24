@@ -1,0 +1,161 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    //results 是 升级网元的数据
+
+       var resultup=[
+        {
+            "board_type": "--",
+            "check_version": "--",
+            "download_url": "http://support.huawei.com/carrier/navi?coltype=software#col=software&detailId=PBI1-23586509&path=PBI1-7275726/PBI1-7275754/PBI1-7275849/PBI1-21427024/PBI1-7704187",
+            "file_name": "OptiX PTN 960 V100R007C00SPH113.zip",
+            "ne_type": "OptiX PTN 960",
+            "patch_version": "SPC200 SPH225",
+            "soft_id": "14203",
+            "strategy_type": "ptn_usp_software",
+            "target_version": "V800R312C00",
+            "type": "补丁包",
+            "id": "bdcdff52-7c76-11e9-8490-0a580af4053e",
+            "active": "1",
+            "keycode": "14203",
+            "change_time": "1574416564622"
+        },
+        {
+            "board_type": "--",
+            "check_version": "--",
+            "download_url": "http://support.huawei.com/carrier/navi?coltype=software#col=software&from=product&detailId=PBI1-22881851&path=PBI1-7275726/PBI1-7275754/PBI1-7275849/PBI1-21427024/PBI1-7704187",
+            "file_name": "OptiX PTN 960 V100R007C00SPH112.zip",
+            "ne_type": "OptiX PTN 960",
+            "patch_version": "V100R007C00SPH113",
+            "soft_id": "14198",
+            "strategy_type": "ptn_usp_software",
+            "target_version": "V800R312C00",
+            "type": "补丁包",
+            "id": "bdcd14f0-7c76-11e9-8490-0a580af4053e",
+            "active": "1",
+            "keycode": "14198",
+            "change_time": "1574416564622"
+        }
+    ]
+    //输出到页面的数据
+    var resultend =  [{
+        "basic_id":"110",
+        "board_type":"--",
+        "create_flag"	:	"0",
+        "ext_id"	:	"41",
+        "gateway_ip"	:	"129.9.41.100",
+        "group_name"	:	"--",
+        "helper_flag"	:	"0",
+        "isgateway"	:	"0",
+        "ne_id"	:	"abadc667-9715-4bbb-9a8b-6252c46e66d7",
+        "ne_ip"	:	"129.9.41.100",
+        "ne_name"	:	"NE41-110",
+        "ne_task_type"	:	"0",
+        "ne_type"	:	"OptiX PTN 7900-12",
+        "nms_id"	:	"201209160006",
+        "order_id"	:	"NC-20191120-00000013",
+        "patch_version"	:	"SPC200 SPH225",
+        "running_status"	:	"normal",
+        "selected"	:	"0",
+        "selected_ne"	:	"0",
+        "soft_version"	:	"V800R312C00",
+        "status"	:	"NOTRUN",
+        "strategy_name"	:	"ptn_vrp_software",
+        "updategatewayip"	:	"0",
+        "id"	:	"945d30b4-0b3c-11ea-90b0-0a580af4032b",
+        "active"	:	"1",
+        "keycode"	:	"abadc667-9715-4bbb-9a8b-6252c46e66d7",
+        "change_time"	:	"1574408134154",
+    },{
+        "basic_id":"111",
+        "board_type":"--",
+        "create_flag"	:	"0",
+        "ext_id"	:	"41",
+        "gateway_ip"	:	"129.9.41.100",
+        "group_name"	:	"--",
+        "helper_flag"	:	"0",
+        "isgateway"	:	"0",
+        "ne_id"	:	"abadc667-9715-4bbb-9a8b-6252c46e66d7",
+        "ne_ip"	:	"129.9.41.100",
+        "ne_name"	:	"NE41-110",
+        "ne_task_type"	:	"0",
+        "ne_type"	:	"OptiX PTN 7900-12",
+        "nms_id"	:	"201209160006",
+        "order_id"	:	"NC-20191120-00000013",
+        "patch_version"	:	"SPC200 SPH225",
+        "running_status"	:	"normal",
+        "selected"	:	"0",
+        "selected_ne"	:	"0",
+        "soft_version"	:	"V800R312C00",
+        "status"	:	"NOTRUN",
+        "strategy_name"	:	"ptn_vrp_software",
+        "updategatewayip"	:	"0",
+        "id"	:	"945d30b4-0b3c-11ea-90b0-0a580af4032b",
+        "active"	:	"1",
+        "keycode"	:	"abadc667-9715-4bbb-9a8b-6252c46e66d7",
+        "change_time"	:	"1574408134154",
+    }];
+
+    var Nearryend = [];//当前版本信息
+    var resultup2 = [];//目标版本信息
+    var resultend2 = [];//过滤后的网元版本信息
+
+    for(var key of resultup){
+        var str = key.target_version+key.patch_version;
+        resultup2.push(str)
+    }
+    console.log(resultup2)//得到了目标版本信息
+    for(var key of resultend){
+        var str = key.soft_version+key.patch_version;
+        var hash = {
+            str:"",
+            basic_id:""
+        };
+        hash["basic_id"]=key.basic_id;
+        hash["str"]=str;
+        //存放对比2的数组
+        Nearryend.push(hash)
+        //resultend2 最终输出的数组
+    }
+    console.log(Nearryend);//得到了当前版本信息
+    //创建一个新数组保存过滤后的 当前版本的 basic_id
+    var basic_idarry = [];
+    for (var s = 0;s<resultup2.length;s++){
+        for(var key of Nearryend){
+            if(resultup2[s]===key.str){
+                basic_idarry.push(key.basic_id)
+            }
+        }
+    }
+    console.log(basic_idarry)//到这里为止输出全部正确
+
+
+    for(var i=0;i<basic_idarry.length;i++){
+        for(var key of resultend){
+            if(key.basic_id==basic_idarry[i]){
+                //splice(start,end)数组的截取
+                resultend2.push(key)
+            }
+        }
+    }
+    for(var a =0;a<basic_idarry.length;a++){
+        for(var b = 0; b<resultend.length;b++){
+            if(resultend[b].basic_id===basic_idarry[a]){
+                resultend.splice(b,1);
+            }
+        }
+    }
+
+    console.log(resultend)//成功提取到了需要过滤的网元信息
+
+
+</script>
+
+</body>
+</html>
+
